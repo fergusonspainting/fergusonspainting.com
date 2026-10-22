@@ -65,7 +65,7 @@ L = {
                  ("Prep and protect", "Floors, plants and furniture get covered before any work starts."),
                  ("Do the work", "Repairs first, then finish work, done right the first time."),
                  ("Walkthrough and cleanup", "We walk the job with you and leave the site clean.")],
-        filter_label="Filter photos", all_work="All work", lang_label="Language", search="Search", close="Close",
+        filter_label="Filter photos", all_work="All work", lang_label="Language", main_nav="Main", search="Search", close="Close", home_label="Ferguson's Painting & Cleaning, home",
         biz_desc="Owner-run painting, carpentry, home repair, remodeling and pressure washing company serving Orlando and Central Florida since 2012.",
         form_note=None,
     ),
@@ -91,7 +91,7 @@ L = {
                  ("Preparar y proteger", "Cubrimos pisos, plantas y muebles antes de empezar."),
                  ("Hacer el trabajo", "Primero las reparaciones, luego el acabado, bien hecho desde la primera vez."),
                  ("Revisión final y limpieza", "Revisamos el trabajo con usted y dejamos todo limpio.")],
-        filter_label="Filtrar fotos", all_work="Todos los trabajos", lang_label="Idioma", search="Buscar", close="Cerrar",
+        filter_label="Filtrar fotos", all_work="Todos los trabajos", lang_label="Idioma", main_nav="Principal", search="Buscar", close="Cerrar", home_label="Ferguson's Painting & Cleaning, inicio",
         biz_desc="Empresa de pintura, carpintería, reparaciones, remodelación y lavado a presión, dirigida por su dueño, al servicio de Orlando y Florida Central desde 2012.",
         form_note="Nuestro equipo responde en inglés. Puede escribir su mensaje en español y lo traduciremos.",
     ),
@@ -117,7 +117,7 @@ L = {
                  ("Preparar e proteger", "Pisos, plantas e móveis são cobertos antes de começar."),
                  ("Executar o serviço", "Primeiro os reparos, depois o acabamento, bem feito da primeira vez."),
                  ("Vistoria e limpeza", "Revisamos o serviço com você e deixamos tudo limpo.")],
-        filter_label="Filtrar fotos", all_work="Todos os trabalhos", lang_label="Idioma", search="Buscar", close="Fechar",
+        filter_label="Filtrar fotos", all_work="Todos os trabalhos", lang_label="Idioma", main_nav="Principal", search="Buscar", close="Fechar", home_label="Ferguson's Painting & Cleaning, página inicial",
         biz_desc="Empresa de pintura, carpintaria, reparos, reformas e lavagem com alta pressão, comandada pelo dono, atendendo Orlando e a Flórida Central desde 2012.",
         form_note="Nossa equipe responde em inglês. Pode escrever sua mensagem em português, e nós traduzimos.",
     ),
@@ -293,7 +293,7 @@ def header(lang, meta):
 <a class="skip" href="#main">{s["skip"]}</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="{pre}/">
+    <a class="brand" href="{pre}/" aria-label="{escape(s["home_label"], quote=True)}">
       <img src="/assets/img/logo-120.webp" width="60" height="60" alt="">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>{s["small"]}</small></span>
     </a>
@@ -302,8 +302,8 @@ def header(lang, meta):
     <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="{s["search"]}" title="{s["search"]}" data-search-open>
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
     </button>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">{s["menu"]}</button>
-    <nav class="nav" id="site-nav" aria-label="Main">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu="{s["menu"]}" data-close="{s["close"]}">{s["menu"]}</button>
+    <nav class="nav" id="site-nav" aria-label="{s["main_nav"]}">
 {nav}
       <a class="btn btn--orange" href="{lang_url(lang, "contact/")}">{s["free_quote"]}</a>
     </nav>
@@ -322,8 +322,7 @@ def footer(lang):
     svc = "\n".join(f'        <li><a href="{lang_url(lang, norm(p))}">{label}</a></li>' for p, label in zip(SERVICE_PATHS, s["services"]))
     areas = "\n".join(f'        <li><a href="{lang_url(lang, norm(p))}">{label}</a></li>' for p, label in AREA_LINKS)
     reply = f'\n        <li>{s["reply"]}</li>' if s["reply"] else ""
-    return f"""</main>
-<section class="cta-band">
+    return f"""<section class="cta-band" data-pagefind-ignore>
   <div class="wrap">
     <div>
       <h2>{s["cta_h"]}</h2>
@@ -337,6 +336,7 @@ def footer(lang):
     </div>
   </div>
 </section>
+</main>
 <footer class="site-footer">
   <div class="wrap">
     <div>
@@ -477,6 +477,9 @@ def build(lang, path):
                 alternates.append((L[x]["html"], SITE + lang_url(x, path)))
         alternates.append(("x-default", SITE + "/" + path))
     page_body = localize_links(localize_form(expand(body, lang), lang), lang)
+    page_body = page_body.replace('<span class="stars" aria-label=', '<span class="stars" role="img" aria-label=')
+    if lang != "en":  # review quotes stay in their original English: tell screen readers (WCAG 3.1.2)
+        page_body = page_body.replace('<blockquote class="quote"', '<blockquote class="quote" lang="en"')
     hero = re.search(r'<img src="[^"]+" srcset="([^"]+)" sizes="([^"]+)"[^>]*fetchpriority="high"', page_body)
     preload = (f'<link rel="preload" as="image" imagesrcset="{hero[1]}" imagesizes="{hero[2]}" fetchpriority="high">\n'
                if hero else "")

@@ -26,8 +26,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/barlow-condensed-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=5233c577cc">
-<script src="/assets/js/site.js?v=34afcd3127" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=3d6306d70e">
+<script src="/assets/js/site.js?v=8cf9a566d6" defer></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fergusonspainting.com/"}, {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://fergusonspainting.com/contact/"}]}
@@ -37,7 +37,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">
+    <a class="brand" href="/" aria-label="Ferguson&#x27;s Painting &amp; Cleaning, home">
       <img src="/assets/img/logo-120.webp" width="60" height="60" alt="">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>Orlando &amp; Central Florida</small></span>
     </a>
@@ -46,7 +46,7 @@
     <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="Search" title="Search" data-search-open>
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
     </button>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu="Menu" data-close="Close">Menu</button>
     <nav class="nav" id="site-nav" aria-label="Main">
       <a href="/services/">Services</a>
       <a href="/gallery/">Our work</a>
@@ -73,11 +73,11 @@
     <form class="form" method="post" action="/api/quote" enctype="multipart/form-data" data-quote-form data-lang="en" data-thanks="/thanks/">
       <input type="hidden" name="lang" value="en">
       <div class="row">
-        <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
-        <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+        <div><label for="name">Name <span class="opt">(required)</span></label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+        <div><label for="phone">Phone</label><input id="phone" aria-describedby="contact-help" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
       </div>
       <div class="row">
-        <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+        <div><label for="email">Email</label><input id="email" aria-describedby="contact-help" name="email" type="email" autocomplete="email" maxlength="200"></div>
         <div><label for="city">City or address</label><input id="city" name="city" autocomplete="address-level2" maxlength="200"></div>
       </div>
       <div>
@@ -131,9 +131,9 @@
       <div class="cf-turnstile" data-sitekey="0x4AAAAAAFgF7yqwi7Slx0f3"></div>
       <p class="form-status" role="alert" hidden></p>
       <div><button class="btn btn--orange" type="submit">Send my quote request</button></div>
-      <p class="opt">Please include a phone number or an email so we can reach you.</p>
+      <p class="opt" id="contact-help">Please include a phone number or an email so we can reach you.</p>
     </form>
-    <aside class="contact-card">
+    <div class="contact-card">
       <h2>Rather talk?</h2>
       <dl>
         <div><dt>Call</dt><dd><a href="tel:+13212027225">(321) 202-7225</a></dd></div>
@@ -142,11 +142,22 @@
         <div><dt>Hours</dt><dd>Monday–Friday, 8am–5pm</dd></div>
         <div><dt>Service area</dt><dd>Orlando, Kissimmee, Celebration, Reunion, Lake Mary and greater Central Florida</dd></div>
       </dl>
-    </aside>
+    </div>
   </div>
 </section>
-</main>
-<section class="cta-band">
+<section class="section section--primer">
+  <div class="wrap">
+    <h2>What happens after you send this</h2>
+    <ol class="process">
+      <li><strong>Right away</strong>Your request and photos go straight to Derwin. If you gave an email, a confirmation arrives within a few minutes.</li>
+      <li><strong>Within one business day</strong>Derwin looks over your details and photos and reaches you the way you chose: a call, a text or an email. Requests sent in the evening or on a weekend get an answer the next business day (Monday–Friday, 8am–5pm).</li>
+      <li><strong>Free estimate</strong>For most jobs we set a time to see the work and give you a written price. Smaller jobs can often be priced from your photos.</li>
+      <li><strong>You decide</strong>No pressure. If the price works for you, we pick a start date together.</li>
+    </ol>
+    <p style="margin-top:1.5rem">Need us sooner? <a href="tel:+13212027225">Call</a> or <a href="sms:+13212027225">text</a> (321) 202-7225.</p>
+  </div>
+</section>
+<section class="cta-band" data-pagefind-ignore>
   <div class="wrap">
     <div>
       <h2>Ready for a fresh coat?</h2>
@@ -160,6 +171,7 @@
     </div>
   </div>
 </section>
+</main>
 <footer class="site-footer">
   <div class="wrap">
     <div>

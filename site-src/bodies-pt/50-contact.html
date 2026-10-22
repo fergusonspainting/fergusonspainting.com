@@ -9,11 +9,11 @@
   <div class="wrap split split--top">
     <form class="form" method="post" action="/api/quote" enctype="multipart/form-data" data-quote-form>
       <div class="row">
-        <div><label for="name">Nome</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
-        <div><label for="phone">Telefone</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+        <div><label for="name">Nome <span class="opt">(obrigatório)</span></label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+        <div><label for="phone">Telefone</label><input id="phone" aria-describedby="contact-help" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
       </div>
       <div class="row">
-        <div><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+        <div><label for="email">E-mail</label><input id="email" aria-describedby="contact-help" name="email" type="email" autocomplete="email" maxlength="200"></div>
         <div><label for="city">Cidade ou endereço</label><input id="city" name="city" autocomplete="address-level2" maxlength="200"></div>
       </div>
       <div>
@@ -67,9 +67,9 @@
       <div class="cf-turnstile" data-sitekey="0x4AAAAAAFgF7yqwi7Slx0f3"></div>
       <p class="form-status" role="alert" hidden></p>
       <div><button class="btn btn--orange" type="submit">Enviar meu pedido de orçamento</button></div>
-      <p class="opt">Informe um telefone ou e-mail para que possamos falar com você.</p>
+      <p class="opt" id="contact-help">Informe um telefone ou e-mail para que possamos falar com você.</p>
     </form>
-    <aside class="contact-card">
+    <div class="contact-card">
       <h2>Prefere conversar?</h2>
       <dl>
         <div><dt>Ligue</dt><dd><a href="tel:+13212027225">(321) 202-7225</a></dd></div>
@@ -78,6 +78,18 @@
         <div><dt>Horário</dt><dd>Segunda a sexta, das 8h às 17h</dd></div>
         <div><dt>Área de atendimento</dt><dd>Orlando, Kissimmee, Celebration, Reunion, Lake Mary e toda a região da Flórida Central</dd></div>
       </dl>
-    </aside>
+    </div>
+  </div>
+</section>
+<section class="section section--primer">
+  <div class="wrap">
+    <h2>O que acontece depois que você envia</h2>
+    <ol class="process">
+      <li><strong>Na hora</strong>Seu pedido e suas fotos vão direto para o Derwin. Se você informou um e-mail, a confirmação chega em poucos minutos.</li>
+      <li><strong>Em até um dia útil</strong>O Derwin analisa seus dados e fotos e entra em contato do jeito que você escolheu: ligação, mensagem de texto ou e-mail. Pedidos enviados à noite ou no fim de semana são respondidos no próximo dia útil (segunda a sexta, 8h às 17h). Nossa equipe responde em inglês.</li>
+      <li><strong>Orçamento grátis</strong>Na maioria dos serviços, marcamos uma visita para ver o trabalho e entregar um preço por escrito. Serviços menores muitas vezes podem ser orçados pelas fotos.</li>
+      <li><strong>Você decide</strong>Sem pressão. Se o preço for bom para você, escolhemos juntos a data de início.</li>
+    </ol>
+    <p style="margin-top:1.5rem">Precisa antes? <a href="tel:+13212027225">Ligue</a> ou <a href="sms:+13212027225">mande uma mensagem</a> para (321) 202-7225.</p>
   </div>
 </section>

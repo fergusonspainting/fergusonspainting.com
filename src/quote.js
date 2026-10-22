@@ -34,6 +34,44 @@ const MSG = {
   call: { en: "Please call (321) 202-7225.", es: "Llame al (321) 202-7225.", pt: "Ligue para (321) 202-7225." },
 };
 
+// Confirmation sent to the customer (if they gave an email). It deliberately repeats nothing the customer typed,
+// so the form can't be used to send someone else arbitrary text. Turn off with env CONFIRM_EMAIL = "off".
+const CONFIRM = {
+  en: {
+    subject: "We got your request – Ferguson's Painting & Cleaning",
+    lines: [
+      "Hello,",
+      "Thank you for contacting Ferguson's Painting & Cleaning. Your quote request (and any photos) reached Derwin.",
+      "What happens next: within one business day (Monday–Friday, 8am–5pm), Derwin will reach you the way you asked: a call, a text or an email. Requests sent in the evening or on a weekend get an answer the next business day.",
+      "Need us sooner? Call or text (321) 202-7225.",
+      "If you didn't send this request, you can ignore this email.",
+      "Ferguson's Painting & Cleaning, Inc. · fergusonspainting.com",
+    ],
+  },
+  es: {
+    subject: "Recibimos su solicitud – Ferguson's Painting & Cleaning",
+    lines: [
+      "Hola:",
+      "Gracias por comunicarse con Ferguson's Painting & Cleaning. Su solicitud de cotización (y sus fotos, si las envió) le llegó a Derwin.",
+      "Qué sigue: en un día hábil (lunes a viernes, 8am–5pm), Derwin se comunicará con usted como lo pidió: llamada, texto o email. Las solicitudes enviadas de noche o en fin de semana se contestan el siguiente día hábil. Nuestro equipo responde en inglés.",
+      "¿Lo necesita antes? Llame o envíe un texto al (321) 202-7225.",
+      "Si usted no envió esta solicitud, puede ignorar este email.",
+      "Ferguson's Painting & Cleaning, Inc. · fergusonspainting.com/es/",
+    ],
+  },
+  pt: {
+    subject: "Recebemos seu pedido – Ferguson's Painting & Cleaning",
+    lines: [
+      "Olá,",
+      "Obrigado por entrar em contato com a Ferguson's Painting & Cleaning. Seu pedido de orçamento (e as fotos, se enviou) chegou ao Derwin.",
+      "Próximos passos: em até um dia útil (segunda a sexta, 8h às 17h), o Derwin vai entrar em contato do jeito que você pediu: ligação, mensagem de texto ou e-mail. Pedidos enviados à noite ou no fim de semana são respondidos no próximo dia útil. Nossa equipe responde em inglês.",
+      "Precisa antes? Ligue ou mande uma mensagem para (321) 202-7225.",
+      "Se você não enviou este pedido, pode ignorar este e-mail.",
+      "Ferguson's Painting & Cleaning, Inc. · fergusonspainting.com/pt-br/",
+    ],
+  },
+};
+
 function toBase64(buffer) {
   const bytes = new Uint8Array(buffer);
   let binary = "";
@@ -134,6 +172,25 @@ export async function handleQuote(request, env) {
   if (!sent || !sent.ok) {
     console.error("Resend failed", sent && sent.status, sent && (await sent.text()));
     return fail(502, t("send"));
+  }
+
+  // Confirmation to the customer. A failure here never fails the request: Derwin already has it.
+  if (data.email && env.CONFIRM_EMAIL !== "off") {
+    const c = CONFIRM[lang];
+    const confirm = {
+      from: `Ferguson's Painting & Cleaning <${env.QUOTE_FROM || "quotes@send.fergusonspainting.com"}>`,
+      to: [data.email],
+      reply_to: env.QUOTE_TO || "derwin@fergusonspainting.com",
+      subject: c.subject,
+      text: c.lines.join("\n\n"),
+      html: c.lines.map((l) => `<p>${esc(l)}</p>`).join(""),
+    };
+    const ok = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify(confirm),
+    }).catch(() => null);
+    if (!ok || !ok.ok) console.error("Confirmation email failed", ok && ok.status);
   }
 
   return done();

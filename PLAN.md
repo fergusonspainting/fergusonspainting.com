@@ -25,6 +25,8 @@
 | Languages (Oct 22) | English, Spanish (`/es/`) and Brazilian Portuguese (`/pt-br/`): every page, plus custom ES/PT landing pages. **The team replies in English**, and translated pages say so. Quote emails are tagged [ES]/[PT] |
 | Service area (Oct 22) | 19 communities: Orlando, Kissimmee, Celebration, Reunion, Reunion West/Encore, ChampionsGate, Davenport, Hunter's Creek, Dr. Phillips, Golden Oak (Lake Buena Vista), Windermere, Lake Butler (estate homes), Horizon West, Winter Garden, Winter Park, Maitland, Altamonte Springs, Longwood, Lake Mary |
 | Site source | Page content in `site-src/` (3 languages); `python tools/build.py` regenerates `public/` |
+| Customer confirmation (Oct 22) | Quote form sends the customer an automatic confirmation in their language; the contact and thanks pages explain the next steps (reply within one business day, Mon–Fri 8–5). Off switch: Worker variable `CONFIRM_EMAIL=off` |
+| Accessibility (Oct 22) | axe-core WCAG 2.2 AA audit of all pages: 0 violations after fixes (landmarks, heading order, field contrast, review language tags, focus not obscured) |
 
 <p align="center"><img src="images/logo-512.png" alt="Ferguson's Painting & Cleaning, Inc. logo" width="320"></p>
 

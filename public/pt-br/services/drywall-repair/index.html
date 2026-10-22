@@ -26,8 +26,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/barlow-condensed-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=5233c577cc">
-<script src="/assets/js/site.js?v=34afcd3127" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=3d6306d70e">
+<script src="/assets/js/site.js?v=8cf9a566d6" defer></script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://fergusonspainting.com/pt-br/"}, {"@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://fergusonspainting.com/pt-br/services/"}, {"@type": "ListItem", "position": 3, "name": "Reparo de drywall", "item": "https://fergusonspainting.com/pt-br/services/drywall-repair/"}]}
 </script>
@@ -42,7 +42,7 @@
 <a class="skip" href="#main">Pular para o conteúdo</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/pt-br/">
+    <a class="brand" href="/pt-br/" aria-label="Ferguson&#x27;s Painting &amp; Cleaning, página inicial">
       <img src="/assets/img/logo-120.webp" width="60" height="60" alt="">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>Orlando e Flórida Central</small></span>
     </a>
@@ -51,8 +51,8 @@
     <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="Buscar" title="Buscar" data-search-open>
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
     </button>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="nav" id="site-nav" aria-label="Main">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu="Menu" data-close="Fechar">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Principal">
       <a href="/pt-br/services/" aria-current="page">Serviços</a>
       <a href="/pt-br/gallery/">Nossos trabalhos</a>
       <a href="/pt-br/reviews/">Avaliações</a>
@@ -95,8 +95,8 @@
   <div class="wrap">
     <h2>Um resgate de drywall de verdade</h2>
     <p>Uma cliente em Orlando teve uma emergência na cozinha: um backsplash antigo precisava sair e um drywall novo tinha que ser instalado, rápido. Derwin encaixou o serviço naquele mesmo fim de semana.</p>
-    <blockquote class="quote" style="max-width:48rem">
-      <span class="stars" aria-label="5 stars">★★★★★</span>
+    <blockquote class="quote" lang="en" style="max-width:48rem">
+      <span class="stars" role="img" aria-label="5 stars">★★★★★</span>
       <p>“Call just a couple of days ago with a kitchen emergency needing help removing old backsplash and installing new drywall. Derwin was a sympathetic professional who fit me in this same weekend - just two days later!”</p>
       <footer>Vicky Medlock, Facebook (avaliação original em inglês)</footer>
     </blockquote>
@@ -122,8 +122,7 @@
     <details><summary>Vocês aceitam serviços pequenos de drywall?</summary><p>Sim. Junte alguns reparos, ou combine com pintura, para aproveitar melhor uma só visita. Veja <a href="/pt-br/services/handyman/">serviços de faz-tudo</a>.</p></details>
   </div>
 </section>
-</main>
-<section class="cta-band">
+<section class="cta-band" data-pagefind-ignore>
   <div class="wrap">
     <div>
       <h2>Pronto para uma pintura nova?</h2>
@@ -137,6 +136,7 @@
     </div>
   </div>
 </section>
+</main>
 <footer class="site-footer">
   <div class="wrap">
     <div>

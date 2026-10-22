@@ -26,8 +26,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/barlow-condensed-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=5233c577cc">
-<script src="/assets/js/site.js?v=34afcd3127" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=3d6306d70e">
+<script src="/assets/js/site.js?v=8cf9a566d6" defer></script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://fergusonspainting.com/es/"}, {"@type": "ListItem", "position": 2, "name": "Áreas de servicio", "item": "https://fergusonspainting.com/es/areas/"}, {"@type": "ListItem", "position": 3, "name": "Horizon West", "item": "https://fergusonspainting.com/es/areas/horizon-west/"}]}
 </script>
@@ -42,7 +42,7 @@
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/es/">
+    <a class="brand" href="/es/" aria-label="Ferguson&#x27;s Painting &amp; Cleaning, inicio">
       <img src="/assets/img/logo-120.webp" width="60" height="60" alt="">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>Orlando y Florida Central</small></span>
     </a>
@@ -51,8 +51,8 @@
     <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="Buscar" title="Buscar" data-search-open>
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
     </button>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menú</button>
-    <nav class="nav" id="site-nav" aria-label="Main">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu="Menú" data-close="Cerrar">Menú</button>
+    <nav class="nav" id="site-nav" aria-label="Principal">
       <a href="/es/services/">Servicios</a>
       <a href="/es/gallery/">Nuestro trabajo</a>
       <a href="/es/reviews/">Reseñas</a>
@@ -109,8 +109,7 @@
     <details><summary>¿Necesito aprobación de la HOA/POA para repintar?</summary><p>Los villages de Horizon West tienen reglas de color para el exterior. Obtenga la aprobación primero y pintaremos con los colores aprobados.</p></details>
   </div>
 </section>
-</main>
-<section class="cta-band">
+<section class="cta-band" data-pagefind-ignore>
   <div class="wrap">
     <div>
       <h2>¿Listo para una nueva capa de pintura?</h2>
@@ -124,6 +123,7 @@
     </div>
   </div>
 </section>
+</main>
 <footer class="site-footer">
   <div class="wrap">
     <div>

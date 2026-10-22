@@ -33,6 +33,8 @@ See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checkl
 
 ## Cloudflare Worker settings
 
+- The quote form emails Derwin, and also sends the customer a short confirmation in their language (it never repeats what they typed). To turn the confirmation off, add a plain variable `CONFIRM_EMAIL` = `off` in the Worker settings.
+
 - Workers & Pages → Create application → Continue with GitHub → this repo. Cloudflare reads `wrangler.jsonc`, so no build settings are needed (deploy command: `npx wrangler deploy`).
 - Worker → Settings → Variables and Secrets: `TURNSTILE_SECRET`, `RESEND_API_KEY` (optional: `QUOTE_TO`, `QUOTE_FROM`)
 - Turnstile site key goes in `public/contact/index.html` (`data-sitekey`). Site key: `0x4AAAAAAFgF7yqwi7Slx0f3` (public; widget "Ferguson's quote form").

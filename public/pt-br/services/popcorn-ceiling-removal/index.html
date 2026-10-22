@@ -26,8 +26,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/barlow-condensed-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=5233c577cc">
-<script src="/assets/js/site.js?v=34afcd3127" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css?v=3d6306d70e">
+<script src="/assets/js/site.js?v=8cf9a566d6" defer></script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://fergusonspainting.com/pt-br/"}, {"@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://fergusonspainting.com/pt-br/services/"}, {"@type": "ListItem", "position": 3, "name": "Remoção de teto popcorn", "item": "https://fergusonspainting.com/pt-br/services/popcorn-ceiling-removal/"}]}
 </script>
@@ -42,7 +42,7 @@
 <a class="skip" href="#main">Pular para o conteúdo</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/pt-br/">
+    <a class="brand" href="/pt-br/" aria-label="Ferguson&#x27;s Painting &amp; Cleaning, página inicial">
       <img src="/assets/img/logo-120.webp" width="60" height="60" alt="">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>Orlando e Flórida Central</small></span>
     </a>
@@ -51,8 +51,8 @@
     <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="Buscar" title="Buscar" data-search-open>
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
     </button>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="nav" id="site-nav" aria-label="Main">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu="Menu" data-close="Fechar">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Principal">
       <a href="/pt-br/services/" aria-current="page">Serviços</a>
       <a href="/pt-br/gallery/">Nossos trabalhos</a>
       <a href="/pt-br/reviews/">Avaliações</a>
@@ -124,8 +124,7 @@
     <details><summary>Vocês podem pintar as paredes ao mesmo tempo?</summary><p>Sim, e é a forma mais eficiente de fazer. Veja <a href="/pt-br/services/interior-painting/">pintura interna</a>.</p></details>
   </div>
 </section>
-</main>
-<section class="cta-band">
+<section class="cta-band" data-pagefind-ignore>
   <div class="wrap">
     <div>
       <h2>Pronto para uma pintura nova?</h2>
@@ -139,6 +138,7 @@
     </div>
   </div>
 </section>
+</main>
 <footer class="site-footer">
   <div class="wrap">
     <div>

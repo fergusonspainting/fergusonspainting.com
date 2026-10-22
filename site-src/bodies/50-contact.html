@@ -9,11 +9,11 @@
   <div class="wrap split split--top">
     <form class="form" method="post" action="/api/quote" enctype="multipart/form-data" data-quote-form>
       <div class="row">
-        <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
-        <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+        <div><label for="name">Name <span class="opt">(required)</span></label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+        <div><label for="phone">Phone</label><input id="phone" aria-describedby="contact-help" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
       </div>
       <div class="row">
-        <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+        <div><label for="email">Email</label><input id="email" aria-describedby="contact-help" name="email" type="email" autocomplete="email" maxlength="200"></div>
         <div><label for="city">City or address</label><input id="city" name="city" autocomplete="address-level2" maxlength="200"></div>
       </div>
       <div>
@@ -67,9 +67,9 @@
       <div class="cf-turnstile" data-sitekey="0x4AAAAAAFgF7yqwi7Slx0f3"></div>
       <p class="form-status" role="alert" hidden></p>
       <div><button class="btn btn--orange" type="submit">Send my quote request</button></div>
-      <p class="opt">Please include a phone number or an email so we can reach you.</p>
+      <p class="opt" id="contact-help">Please include a phone number or an email so we can reach you.</p>
     </form>
-    <aside class="contact-card">
+    <div class="contact-card">
       <h2>Rather talk?</h2>
       <dl>
         <div><dt>Call</dt><dd><a href="tel:+13212027225">(321) 202-7225</a></dd></div>
@@ -78,6 +78,18 @@
         <div><dt>Hours</dt><dd>Monday–Friday, 8am–5pm</dd></div>
         <div><dt>Service area</dt><dd>Orlando, Kissimmee, Celebration, Reunion, Lake Mary and greater Central Florida</dd></div>
       </dl>
-    </aside>
+    </div>
+  </div>
+</section>
+<section class="section section--primer">
+  <div class="wrap">
+    <h2>What happens after you send this</h2>
+    <ol class="process">
+      <li><strong>Right away</strong>Your request and photos go straight to Derwin. If you gave an email, a confirmation arrives within a few minutes.</li>
+      <li><strong>Within one business day</strong>Derwin looks over your details and photos and reaches you the way you chose: a call, a text or an email. Requests sent in the evening or on a weekend get an answer the next business day (Monday–Friday, 8am–5pm).</li>
+      <li><strong>Free estimate</strong>For most jobs we set a time to see the work and give you a written price. Smaller jobs can often be priced from your photos.</li>
+      <li><strong>You decide</strong>No pressure. If the price works for you, we pick a start date together.</li>
+    </ol>
+    <p style="margin-top:1.5rem">Need us sooner? <a href="tel:+13212027225">Call</a> or <a href="sms:+13212027225">text</a> (321) 202-7225.</p>
   </div>
 </section>

@@ -7,7 +7,15 @@ if (toggle && nav) {
   toggle.addEventListener("click", () => {
     const open = nav.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.textContent = open ? "Close" : "Menu";
+    toggle.textContent = open ? toggle.dataset.close || "Close" : toggle.dataset.menu || "Menu";
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("is-open")) {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.textContent = toggle.dataset.menu || "Menu";
+      toggle.focus();
+    }
   });
 }
 
