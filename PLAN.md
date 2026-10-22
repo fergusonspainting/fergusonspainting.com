@@ -19,7 +19,8 @@
 | Service area | Orlando, Kissimmee, Celebration, Reunion, Lake Mary + greater Central Florida |
 | Site stack | Plain HTML/CSS/vanilla JS, no build step |
 | SEO pages (Oct 22) | Based on a review of 11 top Orlando painter/handyman sites: split exterior/interior painting; added popcorn ceiling removal, handyman, a pressure-washing page (renamed from cleaning), city pages for Kissimmee, Celebration, Reunion and Lake Mary, a cost-factors guide, and an HOA/POA section. Breadcrumb, Service and FAQ schema on every page. "HOA or POA" is used everywhere because owners use both terms |
-| Projects to cite | Exterior painting of 450 Burma (450burma.com), Encore at Reunion West. Victorian repaints in Celebration |
+| Projects to cite | Exterior painting of 450 Burma (450burma.com), Encore at Reunion West, with the owner's OK to name and link it. Victorian repaints in Celebration |
+| Paint brand | Sherwin-Williams by preference, other brands on request |
 | Contact buttons | Call, Email and Free quote on the sticky phone bar and the CTA band on every page |
 
 <p align="center"><img src="images/logo-512.png" alt="Ferguson's Painting & Cleaning, Inc. logo" width="320"></p>
@@ -406,10 +407,10 @@ Cloudflare now labels Pages "legacy", so the site runs as a Worker with static a
 4. ~~**Licensing/insurance:**~~ ✅ "Fully insured", with no license claim.
 5. ~~**Years of experience:**~~ ✅ "Since 2012".
 6. **Service area:** Orlando, Kissimmee, Celebration, Reunion and Lake Mary confirmed. Any other cities or neighborhoods to add?
-7. **Services to highlight or drop:** is janitorial work still offered? Is pool-deck building a service to push? Popcorn ceilings: ✅ offered. Cabinet painting, fence/deck staining, stucco *repair*: offered? (Competitors have pages for them.)
+7. **Services to highlight or drop:** is janitorial work still offered? Is pool-deck building a service to push? Popcorn ceilings: ✅ offered. Stucco repair: ✅ offered (page added Oct 22). Cabinet painting, fence/deck staining: offered? (Competitors have pages for them.)
 7a. **Pool decks and remodeling scope:** structural deck building and some remodeling can need a Florida contractor license or permits. Confirm what Derwin does himself, so the copy stays accurate.
-7b. **Paint brands:** which brands does he use (Sherwin-Williams, Benjamin Moore)? Competitors name theirs.
-7c. **450 Burma:** has the owner OK'd naming and linking the home?
+7b. ~~**Paint brands:**~~ ✅ Sherwin-Williams by preference, other brands on request. No partnership or certification claim.
+7c. ~~**450 Burma:**~~ ✅ The owner OK'd naming and linking the home.
 8. **Free estimates?** Payment methods? Senior or military discounts?
 9. ~~**Email hosting:**~~ ✅ Google Workspace (Gmail) mailbox; the form sends via Resend.
 10. **Photos:** OK to use the selected photos? Any customer homes or commercial clients to exclude? Originals on his phone? More pressure-washing and cleaning photos?
