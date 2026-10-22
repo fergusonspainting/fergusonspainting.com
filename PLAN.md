@@ -378,7 +378,7 @@ Cloudflare now labels Pages "legacy", so the site runs as a Worker with static a
   1. In Resend, add the domain `send.fergusonspainting.com` (a subdomain, so it never conflicts with the main mailbox records).
   2. Add the DKIM TXT, SPF TXT and bounce MX records that Resend shows into Cloudflare DNS. They all live on the `send` subdomain and are **DNS only** (grey cloud).
   3. Create an API key with sending access only, and save it as the `RESEND_API_KEY` secret on the Pages project.
-- **DMARC:** none exists yet (checked Oct 21). Add `v=DMARC1; p=none; rua=mailto:derwin@fergusonspainting.com`, then tighten to `quarantine` after a few clean weeks.
+- **DMARC:** ✅ added Oct 22: `v=DMARC1; p=none; rua=mailto:derwin@fergusonspainting.com`, then tighten to `quarantine` after a few clean weeks.
 
 ---
 
