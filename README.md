@@ -22,7 +22,7 @@ See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checkl
 ## Editing
 
 1. Edit the page in `site-src/bodies/` (English). Make the same change in `bodies-es/` and `bodies-pt/`. Keep the HTML structure identical across the three.
-2. Run `python tools/build.py`. It needs Python 3 with Pillow (`pip install pillow`).
+2. Run `python tools/build.py`. It needs Python 3 with Pillow and Pagefind (`pip install pillow "pagefind[bin]"`). It also rebuilds the search index in `public/pagefind/`.
 3. Preview with `python -m http.server 8080 -d public` and open http://localhost:8080.
 4. Commit and push. Cloudflare deploys `main` automatically.
 

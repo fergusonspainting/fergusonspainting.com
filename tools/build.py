@@ -65,7 +65,7 @@ L = {
                  ("Prep and protect", "Floors, plants and furniture get covered before any work starts."),
                  ("Do the work", "Repairs first, then finish work, done right the first time."),
                  ("Walkthrough and cleanup", "We walk the job with you and leave the site clean.")],
-        filter_label="Filter photos", all_work="All work", lang_label="Language",
+        filter_label="Filter photos", all_work="All work", lang_label="Language", search="Search", close="Close",
         biz_desc="Owner-run painting, carpentry, home repair, remodeling and pressure washing company serving Orlando and Central Florida since 2012.",
         form_note=None,
     ),
@@ -91,7 +91,7 @@ L = {
                  ("Preparar y proteger", "Cubrimos pisos, plantas y muebles antes de empezar."),
                  ("Hacer el trabajo", "Primero las reparaciones, luego el acabado, bien hecho desde la primera vez."),
                  ("Revisión final y limpieza", "Revisamos el trabajo con usted y dejamos todo limpio.")],
-        filter_label="Filtrar fotos", all_work="Todos los trabajos", lang_label="Idioma",
+        filter_label="Filtrar fotos", all_work="Todos los trabajos", lang_label="Idioma", search="Buscar", close="Cerrar",
         biz_desc="Empresa de pintura, carpintería, reparaciones, remodelación y lavado a presión, dirigida por su dueño, al servicio de Orlando y Florida Central desde 2012.",
         form_note="Nuestro equipo responde en inglés. Puede escribir su mensaje en español y lo traduciremos.",
     ),
@@ -117,7 +117,7 @@ L = {
                  ("Preparar e proteger", "Pisos, plantas e móveis são cobertos antes de começar."),
                  ("Executar o serviço", "Primeiro os reparos, depois o acabamento, bem feito da primeira vez."),
                  ("Vistoria e limpeza", "Revisamos o serviço com você e deixamos tudo limpo.")],
-        filter_label="Filtrar fotos", all_work="Todos os trabalhos", lang_label="Idioma",
+        filter_label="Filtrar fotos", all_work="Todos os trabalhos", lang_label="Idioma", search="Buscar", close="Fechar",
         biz_desc="Empresa de pintura, carpintaria, reparos, reformas e lavagem com alta pressão, comandada pelo dono, atendendo Orlando e a Flórida Central desde 2012.",
         form_note="Nossa equipe responde em inglês. Pode escrever sua mensagem em português, e nós traduzimos.",
     ),
@@ -279,6 +279,9 @@ def header(lang, meta):
     </a>
     <a class="header-phone" href="{TEL}">{PHONE}</a>
     <nav class="langs" aria-label="{s["lang_label"]}">{langs}</nav>
+    <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="{s["search"]}" title="{s["search"]}" data-search-open>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    </button>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">{s["menu"]}</button>
     <nav class="nav" id="site-nav" aria-label="Main">
 {nav}
@@ -286,7 +289,11 @@ def header(lang, meta):
     </nav>
   </div>
 </header>
-<main id="main">
+<dialog class="search-dialog" aria-label="{s["search"]}">
+  <div class="search-dialog__bar"><strong>{s["search"]}</strong><button type="button" class="btn btn--black" data-search-close>{s["close"]}</button></div>
+  <div id="site-search"></div>
+</dialog>
+<main id="main"{" data-pagefind-body" if not meta.get("noindex") else ""}>
 """
 
 
@@ -480,3 +487,10 @@ if __name__ == "__main__":
             build(lang, path)
         counts[lang] = len(PAGES[lang])
     print("built", counts, "| sitemap urls:", sitemap())
+    # Rebuild the search index (pip install "pagefind[bin]")
+    import subprocess
+    try:
+        r = subprocess.run([sys.executable, "-m", "pagefind", "--site", str(PUB)], capture_output=True, text=True, check=True)
+        print("search index:", " | ".join(l.strip() for l in r.stdout.splitlines() if "Indexed" in l and ("pages" in l or "languages" in l)))
+    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        print("WARNING: search index not rebuilt. Install it with: pip install \"pagefind[bin]\"", e)

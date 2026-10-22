@@ -12,3 +12,6 @@
 
 /assets/img/*
   Cache-Control: public, max-age=31536000, immutable
+
+/pagefind/*
+  Cache-Control: public, max-age=3600

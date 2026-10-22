@@ -49,6 +49,9 @@
     </a>
     <a class="header-phone" href="tel:+13212027225">(321) 202-7225</a>
     <nav class="langs" aria-label="Idioma"><a href="/areas/championsgate/" hreflang="en" lang="en" title="English">EN</a><a href="/es/areas/championsgate/" hreflang="es" lang="es" title="Español">ES</a><a href="/pt-br/areas/championsgate/" hreflang="pt-BR" lang="pt-BR" aria-current="true" title="Português">PT</a></nav>
+    <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="Buscar" title="Buscar" data-search-open>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+    </button>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="nav" id="site-nav" aria-label="Main">
       <a href="/pt-br/services/">Serviços</a>
@@ -60,7 +63,11 @@
     </nav>
   </div>
 </header>
-<main id="main">
+<dialog class="search-dialog" aria-label="Buscar">
+  <div class="search-dialog__bar"><strong>Buscar</strong><button type="button" class="btn btn--black" data-search-close>Fechar</button></div>
+  <div id="site-search"></div>
+</dialog>
+<main id="main" data-pagefind-body>
 <section class="banner">
   <div class="wrap">
     <h1>Pintores residenciais em ChampionsGate, FL</h1>

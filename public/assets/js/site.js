@@ -114,3 +114,40 @@ if (form) {
     button.textContent = label;
   });
 }
+
+// Site search: Pagefind UI, loaded the first time the dialog opens
+const searchDialog = document.querySelector(".search-dialog");
+if (searchDialog && typeof searchDialog.showModal === "function") {
+  let loaded = false;
+  const load = () => {
+    if (loaded) return;
+    loaded = true;
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "/pagefind/pagefind-ui.css";
+    document.head.append(css);
+    const script = document.createElement("script");
+    script.src = "/pagefind/pagefind-ui.js";
+    script.onload = () => {
+      new PagefindUI({ element: "#site-search", showSubResults: true, showImages: false, resetStyles: false });
+      searchDialog.querySelector("input")?.focus();
+    };
+    document.head.append(script);
+  };
+  document.querySelectorAll("[data-search-open]").forEach((b) =>
+    b.addEventListener("click", () => {
+      searchDialog.showModal();
+      load();
+      searchDialog.querySelector("input")?.focus();
+    }),
+  );
+  searchDialog.querySelector("[data-search-close]").addEventListener("click", () => searchDialog.close());
+  searchDialog.addEventListener("click", (e) => { if (e.target === searchDialog) searchDialog.close(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
+      e.preventDefault();
+      searchDialog.showModal();
+      load();
+    }
+  });
+}
