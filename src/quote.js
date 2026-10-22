@@ -42,7 +42,7 @@ const CONFIRM = {
     lines: [
       "Hello,",
       "Thank you for contacting Ferguson's Painting & Cleaning. Your quote request (and any photos) reached Derwin.",
-      "What happens next: within one business day (Monday–Friday, 8am–5pm), Derwin will reach you the way you asked: a call, a text or an email. Requests sent in the evening or on a weekend get an answer the next business day.",
+      "What happens next: within one business day (we're open 24 hours, Monday–Saturday), Derwin will reach you the way you asked: a call, a text or an email. Requests sent on a Sunday get an answer Monday.",
       "Need us sooner? Call or text (321) 202-7225.",
       "If you didn't send this request, you can ignore this email.",
       "Ferguson's Painting & Cleaning, Inc. · fergusonspainting.com",
@@ -53,7 +53,7 @@ const CONFIRM = {
     lines: [
       "Hola:",
       "Gracias por comunicarse con Ferguson's Painting & Cleaning. Su solicitud de cotización (y sus fotos, si las envió) le llegó a Derwin.",
-      "Qué sigue: en un día hábil (lunes a viernes, 8am–5pm), Derwin se comunicará con usted como lo pidió: llamada, texto o email. Las solicitudes enviadas de noche o en fin de semana se contestan el siguiente día hábil. Nuestro equipo responde en inglés.",
+      "Qué sigue: en un día hábil (atendemos las 24 horas, de lunes a sábado), Derwin se comunicará con usted como lo pidió: llamada, texto o email. Las solicitudes enviadas el domingo se contestan el lunes. Nuestro equipo responde en inglés.",
       "¿Lo necesita antes? Llame o envíe un texto al (321) 202-7225.",
       "Si usted no envió esta solicitud, puede ignorar este email.",
       "Ferguson's Painting & Cleaning, Inc. · fergusonspainting.com/es/",
@@ -64,7 +64,7 @@ const CONFIRM = {
     lines: [
       "Olá,",
       "Obrigado por entrar em contato com a Ferguson's Painting & Cleaning. Seu pedido de orçamento (e as fotos, se enviou) chegou ao Derwin.",
-      "Próximos passos: em até um dia útil (segunda a sexta, 8h às 17h), o Derwin vai entrar em contato do jeito que você pediu: ligação, mensagem de texto ou e-mail. Pedidos enviados à noite ou no fim de semana são respondidos no próximo dia útil. Nossa equipe responde em inglês.",
+      "Próximos passos: em até um dia útil (atendemos 24 horas, de segunda a sábado), o Derwin vai entrar em contato do jeito que você pediu: ligação, mensagem de texto ou e-mail. Pedidos enviados no domingo são respondidos na segunda-feira. Nossa equipe responde em inglês.",
       "Precisa antes? Ligue ou mande uma mensagem para (321) 202-7225.",
       "Se você não enviou este pedido, pode ignorar este e-mail.",
       "Ferguson's Painting & Cleaning, Inc. · fergusonspainting.com/pt-br/",

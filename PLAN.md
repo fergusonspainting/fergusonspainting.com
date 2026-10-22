@@ -15,7 +15,7 @@
 | Address | City only ("Orlando, FL"), listed as a service-area business. No street address on the site or in schema |
 | Experience | "Serving Central Florida since 2012". No years figure |
 | Credentials | "Fully insured". No "licensed" claim |
-| Hours | Monday–Friday, 8am–5pm |
+| Hours | Open 24 hours, Monday–Saturday; closed Sunday ("24/6", per Derwin, Oct 22 2026; replaces the earlier Mon–Fri 8–5) |
 | Service area | Orlando, Kissimmee, Celebration, Reunion, Lake Mary + greater Central Florida |
 | Site stack | Plain HTML/CSS/vanilla JS, no build step |
 | SEO pages (Oct 22) | Based on a review of 11 top Orlando painter/handyman sites: split exterior/interior painting; added popcorn ceiling removal, handyman, a pressure-washing page (renamed from cleaning), city pages for Kissimmee, Celebration, Reunion and Lake Mary, a cost-factors guide, and an HOA/POA section. Breadcrumb, Service and FAQ schema on every page. "HOA or POA" is used everywhere because owners use both terms |
@@ -25,7 +25,7 @@
 | Languages (Oct 22) | English, Spanish (`/es/`) and Brazilian Portuguese (`/pt-br/`): every page, plus custom ES/PT landing pages. **The team replies in English**, and translated pages say so. Quote emails are tagged [ES]/[PT] |
 | Service area (Oct 22) | 19 communities: Orlando, Kissimmee, Celebration, Reunion, Reunion West/Encore, ChampionsGate, Davenport, Hunter's Creek, Dr. Phillips, Golden Oak (Lake Buena Vista), Windermere, Lake Butler (estate homes), Horizon West, Winter Garden, Winter Park, Maitland, Altamonte Springs, Longwood, Lake Mary |
 | Site source | Page content in `site-src/` (3 languages); `python tools/build.py` regenerates `public/` |
-| Customer confirmation (Oct 22) | Quote form sends the customer an automatic confirmation in their language; the contact and thanks pages explain the next steps (reply within one business day, Mon–Fri 8–5). Off switch: Worker variable `CONFIRM_EMAIL=off` |
+| Customer confirmation (Oct 22) | Quote form sends the customer an automatic confirmation in their language; the contact and thanks pages explain the next steps (reply within one business day; open 24 h Mon–Sat, closed Sunday). Off switch: Worker variable `CONFIRM_EMAIL=off` |
 | Accessibility (Oct 22) | axe-core WCAG 2.2 AA audit of all pages: 0 violations after fixes (landmarks, heading order, field contrast, review language tags, focus not obscured) |
 
 <p align="center"><img src="images/logo-512.png" alt="Ferguson's Painting & Cleaning, Inc. logo" width="320"></p>
@@ -56,7 +56,7 @@ Replace the Facebook page as the business's main web presence with a fast, mobil
 | Incorporated | Aug 27, 2012 (corporation) | BBB | ✅ |
 | Experience | Facebook: "A complete maintenance service for over 20 years" · Houzz: "over 27 years" | Facebook, Houzz | ✅ Use "Since 2012" instead of a years figure |
 | Tagline | "Always a professional, neat and clean service" | Facebook bio | ✅ use as hero tagline |
-| Facebook category | House Painting · price "$" · "Always open" · has a **Book now** button | Facebook | ✅ Hours: Mon–Fri 8am–5pm (fix "Always open" on Facebook) |
+| Facebook category | House Painting · price "$" · "Always open" · has a **Book now** button | Facebook | ✅ Hours: 24 h Mon–Sat, closed Sunday (fix "Always open" on Facebook) |
 | Facebook audience | 217 followers · 160 photos | Facebook | — |
 | Service area | Orlando, Kissimmee, Celebration, Reunion, Lake Mary (+ greater Central FL) | Houzz, WeFixCelebration, Randall | ✅ Kissimmee & Reunion added Oct 21; more cities welcome |
 | Clients | Residential and commercial (retail store, pool & spa store, clubhouse in photos) | Houzz, Facebook photos | ✅ |
@@ -299,7 +299,7 @@ fergusonspainting.com/          # repo root = this folder
   "foundingDate": "2012-08-27",
   "areaServed": ["Orlando FL", "Kissimmee FL", "Celebration FL", "Reunion FL", "Lake Mary FL"],
   "address": { "@type": "PostalAddress", "addressLocality": "Orlando", "addressRegion": "FL", "addressCountry": "US" },
-  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" }],
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "00:00", "closes": "23:59" }],
   "sameAs": ["https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/"]
 }
 ```
@@ -442,7 +442,7 @@ Systemic: five name variants, three "years in business" figures (13/20/30/40), t
 - Name: **Ferguson's Painting & Cleaning** (legal: Ferguson's Painting & Cleaning, Inc.). "Home repairs" goes in categories/description, not the name. Rename existing listings; never create duplicates (the 21 reviews stay with the renamed profile).
 - Phone (321) 202-7225 · https://fergusonspainting.com · derwin@fergusonspainting.com (retire the Gmail)
 - Address: none public (service-area business). **Decision needed:** the address is already on Google, BBB, Nextdoor and Angi; either remove it everywhere or accept it everywhere.
-- Founded 2012 ("since 2012"); drop the 20/30/40-year claims. Hours Mon–Fri 8am–5pm. Categories: Painter (primary), Handyman, Pressure washing service, Drywall contractor.
+- Founded 2012 ("since 2012"); drop the 20/30/40-year claims. Hours: open 24 hours Mon–Sat, closed Sunday (on GBP set Mon–Sat to "Open 24 hours", Sunday "Closed"). Categories: Painter (primary), Handyman, Pressure washing service, Drywall contractor.
 - Description (≤750 chars, no license claim): "Ferguson's Painting & Cleaning is an owner-operated, fully insured painting and home-repair company serving Orlando and Central Florida since 2012. Derwin Ferguson personally handles exterior and interior painting, stucco and drywall repair, popcorn ceiling removal, wood rot repair, pressure washing, carpentry and vacation-rental turnarounds in Orlando, Kissimmee, Celebration, Reunion, ChampionsGate and Davenport. Free written estimates. Spanish and Portuguese speakers welcome (we reply in English). Call or text (321) 202-7225."
 
 ### Ranked actions
@@ -488,7 +488,7 @@ About page E-E-A-T section, gallery hub, review themes, home + commercial FAQs (
 
 1. **Public name:** use "Ferguson's Painting & Cleaning, Inc." everywhere, with "& Home Repair" only in descriptions? (The logo drops "Home Repair".)
 2. ~~**Address:**~~ ✅ City only, as a service-area business.
-3. ~~**Hours:**~~ ✅ Mon–Fri 8am–5pm. *(Still open: is emergency or weekend work available?)*
+3. ~~**Hours:**~~ ✅ 24/6: open 24 hours Monday–Saturday, closed Sunday (Derwin, Oct 22 2026). Saturday and evening work is available.
 4. ~~**Licensing/insurance:**~~ ✅ "Fully insured", with no license claim.
 5. ~~**Years of experience:**~~ ✅ "Since 2012".
 6. **Service area:** Orlando, Kissimmee, Celebration, Reunion and Lake Mary confirmed. Any other cities or neighborhoods to add?
