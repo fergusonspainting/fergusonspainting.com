@@ -382,3 +382,10 @@ html:not([lang="en"]) .brand small { display: none; }
   .brand { margin-right: auto; }
   .langs { margin-left: 0; }
 }
+
+/* Guide byline and related-links block */
+.byline { max-width: var(--wrap); margin: 1rem auto -1.5rem; padding: 0 var(--gutter); color: var(--muted); font-size: .95rem; }
+.related h2 { font-size: 1.6rem; margin-bottom: .75rem; }
+.related .areas li { font-size: 1rem; padding: .35rem .85rem; }
+.related .areas a { text-decoration: none; color: var(--black); }
+.related .areas a:hover { color: var(--orange-deep); }

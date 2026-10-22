@@ -60,12 +60,12 @@ L = {
         bar=["Call", "Text", "Email", "Quote"],
         crumbs={"home": "Home", "services": "Services", "areas": "Service areas", "guides": "Guides"},
         process_h="How a job goes",
-        process=[("Free estimate", "We come out, look at the job and give you a clear written price."),
+        process=[("Free estimate", '<a href="/about/">Derwin</a> comes out, looks at the job and gives you a clear written price.'),
                  ("Schedule", "We book a start date that works for you and keep you posted."),
                  ("Prep and protect", "Floors, plants and furniture get covered before any work starts."),
                  ("Do the work", "Repairs first, then finish work, done right the first time."),
                  ("Walkthrough and cleanup", "We walk the job with you and leave the site clean.")],
-        filter_label="Filter photos", all_work="All work", lang_label="Language", main_nav="Main", search="Search", close="Close", home_label="Ferguson's Painting & Cleaning, home",
+        filter_label="Filter photos", all_work="All work", lang_label="Language", related_h="More from Ferguson's", related=[("about/", "About Derwin"), ("services/", "All services"), ("areas/", "Service areas"), ("guides/", "Homeowner guides"), ("reviews/", "Reviews"), ("gallery/", "Our work")], byline="From the team at Ferguson's Painting &amp; Cleaning, Orlando. Updated October 2026.", main_nav="Main", search="Search", close="Close", home_label="Ferguson's Painting & Cleaning, home",
         biz_desc="Owner-run painting, carpentry, home repair, remodeling and pressure washing company serving Orlando and Central Florida since 2012.",
         form_note=None,
     ),
@@ -86,12 +86,12 @@ L = {
         bar=["Llamar", "Texto", "Email", "Cotizar"],
         crumbs={"home": "Inicio", "services": "Servicios", "areas": "Áreas de servicio", "guides": "Guías"},
         process_h="Cómo funciona un trabajo",
-        process=[("Estimado gratis", "Vamos, revisamos el trabajo y le damos un precio claro por escrito."),
+        process=[("Estimado gratis", '<a href="/about/">Derwin</a> va, revisa el trabajo y le da un precio claro por escrito.'),
                  ("Programación", "Fijamos una fecha de inicio que le convenga y lo mantenemos informado."),
                  ("Preparar y proteger", "Cubrimos pisos, plantas y muebles antes de empezar."),
                  ("Hacer el trabajo", "Primero las reparaciones, luego el acabado, bien hecho desde la primera vez."),
                  ("Revisión final y limpieza", "Revisamos el trabajo con usted y dejamos todo limpio.")],
-        filter_label="Filtrar fotos", all_work="Todos los trabajos", lang_label="Idioma", main_nav="Principal", search="Buscar", close="Cerrar", home_label="Ferguson's Painting & Cleaning, inicio",
+        filter_label="Filtrar fotos", all_work="Todos los trabajos", lang_label="Idioma", related_h="Más de Ferguson's", related=[("about/", "Sobre Derwin"), ("services/", "Todos los servicios"), ("areas/", "Áreas de servicio"), ("guides/", "Guías para propietarios"), ("reviews/", "Reseñas"), ("gallery/", "Nuestro trabajo")], byline="Del equipo de Ferguson's Painting &amp; Cleaning, Orlando. Actualizado en octubre de 2026.", main_nav="Principal", search="Buscar", close="Cerrar", home_label="Ferguson's Painting & Cleaning, inicio",
         biz_desc="Empresa de pintura, carpintería, reparaciones, remodelación y lavado a presión, dirigida por su dueño, al servicio de Orlando y Florida Central desde 2012.",
         form_note="Nuestro equipo responde en inglés. Puede escribir su mensaje en español y lo traduciremos.",
     ),
@@ -112,12 +112,12 @@ L = {
         bar=["Ligar", "Mensagem", "E-mail", "Orçamento"],
         crumbs={"home": "Início", "services": "Serviços", "areas": "Áreas atendidas", "guides": "Guias"},
         process_h="Como funciona o serviço",
-        process=[("Orçamento grátis", "Vamos até você, avaliamos o serviço e entregamos um preço claro por escrito."),
+        process=[("Orçamento grátis", '<a href="/about/">O Derwin</a> vai até você, avalia o serviço e entrega um preço claro por escrito.'),
                  ("Agendamento", "Marcamos uma data de início que funcione para você e mantemos você informado."),
                  ("Preparar e proteger", "Pisos, plantas e móveis são cobertos antes de começar."),
                  ("Executar o serviço", "Primeiro os reparos, depois o acabamento, bem feito da primeira vez."),
                  ("Vistoria e limpeza", "Revisamos o serviço com você e deixamos tudo limpo.")],
-        filter_label="Filtrar fotos", all_work="Todos os trabalhos", lang_label="Idioma", main_nav="Principal", search="Buscar", close="Fechar", home_label="Ferguson's Painting & Cleaning, página inicial",
+        filter_label="Filtrar fotos", all_work="Todos os trabalhos", lang_label="Idioma", related_h="Mais da Ferguson's", related=[("about/", "Sobre o Derwin"), ("services/", "Todos os serviços"), ("areas/", "Áreas atendidas"), ("guides/", "Guias para proprietários"), ("reviews/", "Avaliações"), ("gallery/", "Nossos trabalhos")], byline="Da equipe da Ferguson's Painting &amp; Cleaning, Orlando. Atualizado em outubro de 2026.", main_nav="Principal", search="Buscar", close="Fechar", home_label="Ferguson's Painting & Cleaning, página inicial",
         biz_desc="Empresa de pintura, carpintaria, reparos, reformas e lavagem com alta pressão, comandada pelo dono, atendendo Orlando e a Flórida Central desde 2012.",
         form_note="Nossa equipe responde em inglês. Pode escrever sua mensagem em português, e nós traduzimos.",
     ),
@@ -420,9 +420,15 @@ def schema(lang, meta, body, url):
     if meta.get("noindex"):
         return ""
     s = L[lang]
-    if meta["path"] == "":
-        return ld(business(lang))
     out = []
+    if meta["path"] == "":
+        out.append(ld(business(lang)))
+        faqs = re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", body, re.S)
+        if faqs:
+            out.append(ld({"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": s["html"], "mainEntity": [
+                {"@type": "Question", "name": strip_tags(q), "acceptedAnswer": {"@type": "Answer", "text": strip_tags(a)}}
+                for q, a in faqs]}))
+        return "".join(out)
     h1 = strip_tags(re.search(r"<h1[^>]*>(.*?)</h1>", body, re.S)[1])
     home = SITE + s["prefix"] + "/"
     crumbs = [(s["crumbs"]["home"], home)]
@@ -461,6 +467,28 @@ def localize_form(body, lang):
     return body.replace("data-quote-form>", attrs + ">" + hidden + note, 1)
 
 
+def related_block(lang, meta, page_body):
+    """Short 'More from Ferguson's' links on service, area and guide pages; byline on guides."""
+    st = L[lang]
+    path = meta["path"]
+    parts = path.strip("/").split("/")
+    is_guide = (parts[0] == "guides" and len(parts) > 1) or parts[0] == "house-painting-cost-orlando"
+    if is_guide:
+        byline = f'<p class="byline">{st["byline"]}</p>'
+        page_body = re.sub(r"(</section>)", r"\1\n" + byline.replace("\\", "\\\\"), page_body, count=1)
+    if not (parts[0] in ("services", "areas", "commercial") or is_guide) or path in ("services/", "areas/"):
+        return page_body
+    links = "".join(f'<li><a href="{lang_url(lang, p)}">{label}</a></li>' for p, label in st["related"] if p != path)
+    block = f"""<section class="section section--primer related" data-pagefind-ignore>
+  <div class="wrap">
+    <h2>{st["related_h"]}</h2>
+    <ul class="areas">{links}</ul>
+  </div>
+</section>
+"""
+    return page_body + block
+
+
 # ---------- build ----------
 def out_path(lang, path):
     base = PUB / L[lang]["prefix"].strip("/") if lang != "en" else PUB
@@ -477,6 +505,7 @@ def build(lang, path):
                 alternates.append((L[x]["html"], SITE + lang_url(x, path)))
         alternates.append(("x-default", SITE + "/" + path))
     page_body = localize_links(localize_form(expand(body, lang), lang), lang)
+    page_body = related_block(lang, meta, page_body)
     page_body = page_body.replace('<span class="stars" aria-label=', '<span class="stars" role="img" aria-label=')
     if lang != "en":  # review quotes stay in their original English: tell screen readers (WCAG 3.1.2)
         page_body = page_body.replace('<blockquote class="quote"', '<blockquote class="quote" lang="en"')
