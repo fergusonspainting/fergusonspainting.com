@@ -388,7 +388,7 @@ Cloudflare now labels Pages "legacy", so the site runs as a Worker with static a
 - [ ] Gallery photos cleaned up (house numbers, brand names), optimized to `.webp`; more cleaning photos added
 - [ ] Reviewers' OK to quote them; exact Google review text copied
 - [ ] All pages built and proofread; the phone number is a `tel:+13212027225` link everywhere
-- [x] Form tested end to end Oct 22 (lands in Derwin's inbox; Turnstile + honeypot block spam). Confirm reply-to on the test email
+- [x] Form tested end to end Oct 22 (lands in Derwin's inbox, reply-to goes to the customer, Turnstile + honeypot block spam)
 - [ ] Lighthouse mobile ≥ 95; tested on iPhone and Android
 - [ ] Custom domain ✅ live; still to do: www → apex redirect rule and Always Use HTTPS
 - [ ] Search Console and Bing verified; sitemap submitted
