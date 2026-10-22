@@ -1,6 +1,6 @@
 # fergusonspainting.com
 
-Website for **Ferguson's Painting & Cleaning, Inc.** (Orlando, FL). It is a static HTML/CSS site hosted on Cloudflare Pages, with one Pages Function for the quote form.
+Website for **Ferguson's Painting & Cleaning, Inc.** (Orlando, FL). It is a static HTML/CSS site hosted on a Cloudflare Worker (static assets), with a small script for the quote form.
 
 See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checklist.
 
@@ -8,10 +8,12 @@ See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checkl
 
 | Path | What it is |
 |---|---|
-| `public/` | The website. Cloudflare Pages serves this folder as-is (no build step). |
+| `public/` | The website. The Worker serves this folder as-is (no build step). |
+| `wrangler.jsonc` | Worker config: serves `public/`, runs `src/worker.js` only for `/api/*`. |
+| `src/worker.js` | Worker entry: routes `/api/quote` to the form handler, everything else to `public/`. |
 | `public/assets/css/site.css` | All styles. Brand colors are at the top (`--orange`, `--black`). |
 | `public/assets/js/site.js` | Mobile menu, gallery filter and lightbox, quote form submit. |
-| `functions/api/quote.js` | `POST /api/quote`: checks Turnstile, then emails the request to derwin@ through Resend. |
+| `src/quote.js` | `POST /api/quote`: checks Turnstile, then emails the request to derwin@ through Resend. |
 | `images/` | Logo files. Original gallery photos live in `images/gallery/` locally only (git-ignored because they are unblurred). |
 | `tools/optimize-images.py` | Turns `images/gallery/**.jpg` into web `.webp` files in `public/assets/img/gallery/`, blurring house numbers and other businesses' names. |
 
@@ -23,8 +25,9 @@ See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checkl
 
 Pushing to `main` deploys automatically. Other branches get a preview URL.
 
-## Cloudflare Pages settings
+## Cloudflare Worker settings
 
-- Build command: *(none)* · Output directory: `public`
-- Variables and Secrets: `TURNSTILE_SECRET`, `RESEND_API_KEY` (optional: `QUOTE_TO`, `QUOTE_FROM`)
+- Workers & Pages → Create application → Continue with GitHub → this repo. Cloudflare reads `wrangler.jsonc`, so no build settings are needed (deploy command: `npx wrangler deploy`).
+- Worker → Settings → Variables and Secrets: `TURNSTILE_SECRET`, `RESEND_API_KEY` (optional: `QUOTE_TO`, `QUOTE_FROM`)
 - Turnstile site key goes in `public/contact/index.html` (`data-sitekey`). It currently has Cloudflare's always-pass **test** key.
+- `_headers` and `_redirects` in `public/` work on Workers static assets too.

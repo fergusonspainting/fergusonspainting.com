@@ -8,7 +8,8 @@
 
 | Topic | Decision |
 |---|---|
-| Code repo | GitHub `fergusonspainting/fergusonspainting.com` (public), deployed by Cloudflare Pages via Connect to Git; output dir `public/` |
+| Code repo | GitHub `fergusonspainting/fergusonspainting.com` (public) |
+| Hosting | **Cloudflare Worker with static assets** (Oct 21: Cloudflare now labels Pages "legacy"). Config in `wrangler.jsonc`; the quote form runs in `src/worker.js` → `src/quote.js` |
 | Domain | Already active on Cloudflare |
 | Email | derwin@fergusonspainting.com is a Google Workspace (Gmail) mailbox. Keep Google's MX/SPF records; the quote form sends through **Resend** from `send.fergusonspainting.com` |
 | Address | City only ("Orlando, FL"), listed as a service-area business. No street address on the site or in schema |
@@ -221,7 +222,7 @@ Rating summary (Google 5.0 ★, Facebook 100% recommend), verbatim reviews, and 
 Use `derwin-on-the-job-01.jpg` or `derwin-tile-shower-02.jpg`. Include the story, years in business, residential and commercial work, values, crew and service area.
 
 ### Contact
-Form fields: name, phone, email, address/city, service (select), project details, preferred contact method, and an optional photo upload (phase 2). Cloudflare Turnstile blocks spam. The form submits to a Pages Function that emails **derwin@fergusonspainting.com**. Also show phone, email and hours.
+Form fields: name, phone, email, address/city, service (select), project details, preferred contact method, and an optional photo upload (phase 2). Cloudflare Turnstile blocks spam. The form submits to the Worker (`/api/quote`), which emails **derwin@fergusonspainting.com**. Also show phone, email and hours.
 
 ---
 
@@ -230,8 +231,8 @@ Form fields: name, phone, email, address/city, service (select), project details
 | Need | Choice | Why |
 |---|---|---|
 | Site generator | **Plain HTML + CSS** (or Astro if more pages come later) | Fast, nothing to break, easy for anyone to edit |
-| Hosting | **Cloudflare Pages** (Git-connected or direct upload) | Free, global CDN, automatic HTTPS, preview URLs |
-| Contact form | **Pages Function** `functions/api/quote.js` | Serverless, same project |
+| Hosting | **Cloudflare Worker + static assets** (Git-connected) | Free, global CDN, automatic HTTPS, preview URLs |
+| Contact form | **Worker script** `src/worker.js` → `src/quote.js` | Serverless, same project |
 | Spam protection | **Cloudflare Turnstile** | Free, no CAPTCHA puzzles |
 | Email delivery from form | See §9.3 (depends on where the mailbox lives) | |
 | Analytics | **Cloudflare Web Analytics** | Free, cookie-less, no banner needed |
@@ -244,9 +245,11 @@ fergusonspainting.com/          # repo root = this folder
 ├── PLAN.md, README.md, .gitignore
 ├── images/                     # source photos & logos (not deployed)
 ├── tools/optimize-images.py    # makes .webp into public/assets/img
-├── functions/
-│   └── api/quote.js            # form handler → Turnstile verify → Resend email
-└── public/                     # Cloudflare Pages output directory
+├── wrangler.jsonc              # Worker config (serves public/, runs src/ for /api/*)
+├── src/
+│   ├── worker.js               # routes /api/quote → quote.js, everything else → public/
+│   └── quote.js                # form handler → Turnstile verify → Resend email
+└── public/                     # static site served by the Worker
     ├── index.html, 404.html
     ├── services/{index,painting,carpentry,repairs,remodeling,cleaning}/index.html
     ├── commercial/ gallery/ reviews/ about/ contact/ thanks/   (index.html each)
@@ -331,7 +334,7 @@ EOF
 This strips location EXIF data (for privacy) and makes full-size and thumbnail versions, keeping the category folders.
 
 ### 8.5 Contact form handler (outline)
-`functions/api/quote.js`:
+`src/quote.js` (called by `src/worker.js`):
 1. Parse the form data. Reject the submission if the honeypot field is filled.
 2. Verify `cf-turnstile-response` with `TURNSTILE_SECRET` (env var).
 3. Check that a name and a phone or email are present, and limit field lengths.
@@ -353,15 +356,15 @@ This strips location EXIF data (for privacy) and makes full-size and thumbnail v
 3. At the registrar, change the nameservers to the two Cloudflare nameservers shown. Wait until the domain shows "Active".
 4. Under SSL/TLS, choose **Full (strict)** and enable **Always Use HTTPS**.
 
-### 9.2 Pages project
-1. The site lives in the GitHub repo **`fergusonspainting/fergusonspainting.com`**. Static files are in `public/`, and the form handler is in `functions/` at the repo root.
-2. Go to Workers & Pages → **Create** → Pages → **Connect to Git**, authorize the Cloudflare GitHub app on the **fergusonspainting** account, and select the repo.
-   - Framework preset: *None* · Build command: *(blank)* · Output directory: `public`
-3. Deploy, then test on the `*.pages.dev` preview URL.
-4. Under **Custom domains**, add `fergusonspainting.com` and `www.fergusonspainting.com` (Cloudflare creates the DNS records automatically).
-5. Under Settings → Environment variables, add `TURNSTILE_SECRET` and `RESEND_API_KEY` (both as encrypted secrets).
-6. In Turnstile, add a site for `fergusonspainting.com` and put the site key in the form.
-7. In Web Analytics, enable it for the Pages project.
+### 9.2 Worker (static assets)
+Cloudflare now labels Pages "legacy", so the site runs as a Worker with static assets.
+1. The site lives in the GitHub repo **`fergusonspainting/fergusonspainting.com`**. Static files are in `public/`, the Worker config is `wrangler.jsonc`, and the form handler is in `src/`.
+2. Go to Workers & Pages → **Create application** → **Continue with GitHub**, authorize the Cloudflare GitHub app on the **fergusonspainting** account, and select the repo. Cloudflare reads `wrangler.jsonc`, so leave the build command empty and keep the deploy command `npx wrangler deploy`.
+3. Deploy, then test on the `*.workers.dev` URL.
+4. Under Settings → **Domains & Routes**, add `fergusonspainting.com` and `www.fergusonspainting.com` as custom domains (Cloudflare creates the DNS records automatically). The Worker must be in the **same Cloudflare account as the domain**.
+5. Under Settings → **Variables and Secrets**, add `TURNSTILE_SECRET` and `RESEND_API_KEY` as secrets.
+6. In Turnstile, add a widget for `fergusonspainting.com` and put the site key in the form.
+7. Enable Web Analytics for the domain.
 
 ### 9.3 Email for derwin@fergusonspainting.com
 **Decided:** derwin@fergusonspainting.com is a **Google Workspace (Gmail)** mailbox. DNS confirmed Oct 21: MX `smtp.google.com`, SPF `v=spf1 include:_spf.google.com ~all`.

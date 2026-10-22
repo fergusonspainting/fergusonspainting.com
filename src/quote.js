@@ -1,5 +1,5 @@
-// POST /api/quote — quote request form handler (Cloudflare Pages Function)
-// Env (Pages > Settings > Variables and Secrets):
+// POST /api/quote — quote request form handler (called from src/worker.js)
+// Env (Worker > Settings > Variables and Secrets):
 //   TURNSTILE_SECRET  Cloudflare Turnstile secret key
 //   RESEND_API_KEY    Resend API key (sending access only)
 //   QUOTE_TO          optional, defaults to derwin@fergusonspainting.com
@@ -7,7 +7,7 @@
 
 const LIMITS = { name: 100, phone: 30, email: 200, city: 200, service: 60, details: 4000, contact_pref: 10 };
 
-export async function onRequestPost({ request, env }) {
+export async function handleQuote(request, env) {
   const wantsJson = (request.headers.get("Accept") || "").includes("application/json");
   const fail = (status, error) =>
     wantsJson
