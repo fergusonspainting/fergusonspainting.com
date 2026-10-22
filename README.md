@@ -8,22 +8,28 @@ See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checkl
 
 | Path | What it is |
 |---|---|
-| `public/` | The website. The Worker serves this folder as-is (no build step). |
+| `site-src/bodies/` | **English page content** (one file per page). Line 1 is JSON metadata (path, title, description); the rest is the page body. |
+| `site-src/bodies-es/`, `site-src/bodies-pt/` | Spanish and Brazilian Portuguese versions, using the same filenames and `path`. The Spanish and Portuguese home pages (`00-home.html`) are custom landing pages, not translations. |
+| `site-src/captions-*.json` | Photo captions (alt text) and gallery category names per language. |
+| `tools/build.py` | Builds `public/` from `site-src/`: wraps each body in the shared header, footer and phone bar, adds hreflang tags, structured data and the language switcher, and writes `sitemap.xml`. |
+| `public/` | The built website, served as-is by the Worker. `/es/...` is Spanish, `/pt-br/...` is Portuguese. **Don't hand-edit the generated HTML;** edit `site-src/` and rebuild. |
+| `public/assets/` | CSS, JS, images (hand-edited). |
 | `wrangler.jsonc` | Worker config: serves `public/`, runs `src/worker.js` only for `/api/*`. |
-| `src/worker.js` | Worker entry: routes `/api/quote` to the form handler, everything else to `public/`. |
-| `public/assets/css/site.css` | All styles. Brand colors are at the top (`--orange`, `--black`). |
-| `public/assets/js/site.js` | Mobile menu, gallery filter and lightbox, quote form submit. |
-| `src/quote.js` | `POST /api/quote`: checks Turnstile, then emails the request to derwin@ through Resend. |
+| `src/worker.js`, `src/quote.js` | Quote form: Turnstile check, then an email to derwin@ via Resend. Error messages come back in the visitor's language, and the email is tagged [ES]/[PT]. |
 | `images/` | Logo files. Original gallery photos live in `images/gallery/` locally only (git-ignored because they are unblurred). |
-| `tools/optimize-images.py` | Turns `images/gallery/**.jpg` into web `.webp` files in `public/assets/img/gallery/`, blurring house numbers and other businesses' names. |
+| `tools/optimize-images.py` | Turns `images/gallery/**.jpg` into web `.webp` files, blurring house numbers and other businesses' names. |
 
 ## Editing
 
-- **Text:** edit the page's `index.html` under `public/`. The header and footer are repeated in every page, so a change to the phone number, nav or hours means a find-and-replace across `public/**/*.html`.
-- **Adding photos:** drop the `.jpg` into `images/gallery/<category>/`, run `python tools/optimize-images.py`, then reference `/assets/img/gallery/<category>/<name>-sm.webp` (thumbnail) or `<name>.webp` (full size). If a photo shows a house number or another company's name, add a blur box for it in the `BLUR` map first.
-- **Preview locally:** `python -m http.server 8080 -d public`, then open http://localhost:8080 (the quote form needs Cloudflare to work).
+1. Edit the page in `site-src/bodies/` (English). Make the same change in `bodies-es/` and `bodies-pt/`. Keep the HTML structure identical across the three.
+2. Run `python tools/build.py`. It needs Python 3 with Pillow (`pip install pillow`).
+3. Preview with `python -m http.server 8080 -d public` and open http://localhost:8080.
+4. Commit and push. Cloudflare deploys `main` automatically.
 
-Pushing to `main` deploys automatically. Other branches get a preview URL.
+- **Header, footer, phone bar, "How a job goes" and the language strings** all live in `tools/build.py` (the `L` dictionary).
+- **New page:** add a body file in all three folders with the same `path`. A page missing from a language falls back to English links automatically.
+- **New photos:** add the `.jpg` to `images/gallery/<category>/`, run `python tools/optimize-images.py`, then add captions to the three `captions-*.json` files.
+- Shortcodes in bodies: `[[img category/name "alt text" wide]]`, `[[gallery]]`, `[[process]]`.
 
 ## Cloudflare Worker settings
 

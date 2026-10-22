@@ -22,6 +22,9 @@
 | Projects to cite | Exterior painting of 450 Burma (450burma.com), Encore at Reunion West, with the owner's OK to name and link it. Victorian repaints in Celebration |
 | Paint brand | Sherwin-Williams by preference, other brands on request |
 | Contact buttons | Call, Email and Free quote on the sticky phone bar and the CTA band on every page |
+| Languages (Oct 22) | English, Spanish (`/es/`) and Brazilian Portuguese (`/pt-br/`): every page, plus custom ES/PT landing pages. **The team replies in English**, and translated pages say so. Quote emails are tagged [ES]/[PT] |
+| Service area (Oct 22) | 19 communities: Orlando, Kissimmee, Celebration, Reunion, Reunion West/Encore, ChampionsGate, Davenport, Hunter's Creek, Dr. Phillips, Golden Oak (Lake Buena Vista), Windermere, Lake Butler (estate homes), Horizon West, Winter Garden, Winter Park, Maitland, Altamonte Springs, Longwood, Lake Mary |
+| Site source | Page content in `site-src/` (3 languages); `python tools/build.py` regenerates `public/` |
 
 <p align="center"><img src="images/logo-512.png" alt="Ferguson's Painting & Cleaning, Inc. logo" width="320"></p>
 
@@ -434,7 +437,8 @@ Method: 3 research passes, 60+ searches, about 40 competitor sites inspected in 
 7. **Services to highlight or drop:** is janitorial work still offered? Is pool-deck building a service to push? Popcorn ceilings: ✅ offered. Stucco repair: ✅ offered (page added Oct 22). Cabinet painting, fence/deck staining: offered? (Competitors have pages for them.)
 7a. **Pool decks and remodeling scope:** structural deck building and some remodeling can need a Florida contractor license or permits. Confirm what Derwin does himself, so the copy stays accurate.
 7b. ~~**Paint brands:**~~ ✅ Sherwin-Williams by preference, other brands on request. No partnership or certification claim.
-7c. ~~**450 Burma:**~~ ✅ The owner OK'd naming and linking the home.
+7c. ~~**450 Burma:**~~ ✅ The owner OK'd naming, linking and using photos (2 exterior photos from 450burma.com, credited).
+7d. **Lead paint:** Is Derwin EPA RRP (lead-safe) certified? It's required for paint work that disturbs paint in pre-1978 homes. The Winter Park page currently only gives information.
 8. **Free estimates?** Payment methods? Senior or military discounts?
 9. ~~**Email hosting:**~~ ✅ Google Workspace (Gmail) mailbox; the form sends via Resend.
 10. **Photos:** OK to use the selected photos? Any customer homes or commercial clients to exclude? Originals on his phone? More pressure-washing and cleaning photos?

@@ -1,0 +1,83 @@
+{"path": "contact/", "title": "Free Painting Quote in Orlando | Ferguson's Painting", "desc": "Request a free estimate for painting, carpentry, repairs, remodeling or pressure washing in Orlando and Central Florida. Call (321) 202-7225.", "nav": "contact", "extra": "<script src=\"https://challenges.cloudflare.com/turnstile/v0/api.js\" async defer></script>\n", "crumb": "Contact"}
+<section class="banner">
+  <div class="wrap">
+    <h1>Get a free quote</h1>
+    <p>Tell us about the job. We usually reply within one business day.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split split--top">
+    <form class="form" method="post" action="/api/quote" enctype="multipart/form-data" data-quote-form>
+      <div class="row">
+        <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+        <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <div class="row">
+        <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+        <div><label for="city">City or address</label><input id="city" name="city" autocomplete="address-level2" maxlength="200"></div>
+      </div>
+      <div>
+        <label for="service">What do you need?</label>
+        <select id="service" name="service">
+          <option>Exterior painting</option>
+          <option>Interior painting</option>
+          <option>Stucco repair</option>
+          <option>Popcorn ceiling removal</option>
+          <option>Wood rot, fascia or siding repair</option>
+          <option>Drywall or handyman repairs</option>
+          <option>Pool deck or carpentry</option>
+          <option>Remodeling</option>
+          <option>Pressure washing</option>
+          <option>Vacation rental work</option>
+          <option>Commercial or HOA/POA work</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div>
+        <label for="details">Project details <span class="opt">(size, timing, anything we should know)</span></label>
+        <textarea id="details" name="details" maxlength="4000"></textarea>
+      </div>
+      <div>
+        <label for="photos">Photos <span class="opt">(optional, up to 5; they help us price the job)</span></label>
+        <input id="photos" name="photos" type="file" accept="image/*" multiple>
+      </div>
+      <div class="row">
+        <div><label for="access">Gate code or access notes <span class="opt">(optional)</span></label><input id="access" name="access" maxlength="300" autocomplete="off"></div>
+        <div><label for="heard">How did you hear about us? <span class="opt">(optional)</span></label>
+          <select id="heard" name="heard">
+            <option value="">Choose one</option>
+            <option>Google search</option>
+            <option>Google Maps</option>
+            <option>Facebook</option>
+            <option>Friend or neighbor</option>
+            <option>Saw our work</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <fieldset>
+        <legend>How should we reach you?</legend>
+        <div class="radios">
+          <label><input type="radio" name="contact_pref" value="Call" checked> Call</label>
+          <label><input type="radio" name="contact_pref" value="Text"> Text</label>
+          <label><input type="radio" name="contact_pref" value="Email"> Email</label>
+        </div>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFgF7yqwi7Slx0f3"></div>
+      <p class="form-status" role="alert" hidden></p>
+      <div><button class="btn btn--orange" type="submit">Send my quote request</button></div>
+      <p class="opt">Please include a phone number or an email so we can reach you.</p>
+    </form>
+    <aside class="contact-card">
+      <h2>Rather talk?</h2>
+      <dl>
+        <div><dt>Call</dt><dd><a href="tel:+13212027225">(321) 202-7225</a></dd></div>
+        <div><dt>Text</dt><dd><a href="sms:+13212027225">(321) 202-7225</a>. Send photos of the job for a faster quote.</dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:derwin@fergusonspainting.com">derwin@fergusonspainting.com</a></dd></div>
+        <div><dt>Hours</dt><dd>Monday–Friday, 8am–5pm</dd></div>
+        <div><dt>Service area</dt><dd>Orlando, Kissimmee, Celebration, Reunion, Lake Mary and greater Central Florida</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>

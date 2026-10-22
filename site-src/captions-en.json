@@ -1,0 +1,79 @@
+{
+ "_cats": {
+  "painting-exterior": "Painting",
+  "carpentry": "Carpentry & decks",
+  "repairs": "Repairs",
+  "remodeling": "Remodeling",
+  "cleaning": "Cleaning",
+  "commercial": "Commercial"
+ },
+ "_all": "All work",
+ "painting-exterior": {
+  "450-burma-encore-reunion-west-front": "Exterior painted by Ferguson's at 450 Burma, Encore at Reunion West (photo courtesy of 450 Burma)",
+  "450-burma-encore-reunion-west-front-night": "450 Burma at dusk, Encore at Reunion West: exterior painted by Ferguson's (photo courtesy of 450 Burma)",
+  "victorian-blue-repaint": "Blue Victorian home after an exterior repaint in Celebration",
+  "victorian-pink-repaint-finished": "Pink Victorian home after an exterior repaint in Celebration",
+  "victorian-pink-repaint-in-progress": "Pink Victorian home during the exterior repaint",
+  "gray-home-finished-porch-roof": "Gray two-story home with a freshly painted metal porch roof",
+  "gray-home-painting-in-progress": "Repainting a gray two-story home with a front porch",
+  "stucco-repaint-two-story-finished": "Two-story stucco home after an exterior repaint",
+  "stucco-repaint-two-story-prep": "Two-story stucco home during prep for paint",
+  "stucco-repaint-yellow-prep": "Prepping a yellow stucco home for a new color",
+  "stucco-repaint-garage": "Stucco home and garage after a repaint",
+  "stucco-repaint-pool-home-in-progress": "Repainting a stucco pool home",
+  "coral-stucco-home-repaint": "Coral stucco home after an exterior repaint",
+  "ranch-repaint-dark-garage-door": "Ranch home repainted with a charcoal garage door",
+  "porch-home-finished": "Porch home after a full exterior repaint",
+  "porch-home-painting-in-progress": "Painting the trim and columns on a wraparound porch",
+  "double-porch-columns": "Two-story porch with freshly painted columns and railings",
+  "carriage-house-pool": "Carriage house by the pool after an exterior repaint",
+  "mediterranean-estate": "Mediterranean-style estate exterior",
+  "lanai-repaint": "Lanai repaint",
+  "screened-pool-lanai": "Screened pool lanai after painting",
+  "metal-roof-painting": "Painting a metal roof",
+  "spray-painting-garage": "Spray painting a garage exterior"
+ },
+ "carpentry": {
+  "pool-deck-posts": "Pool deck build: setting the posts",
+  "pool-deck-framing": "Pool deck build: framing",
+  "pool-deck-boards": "Pool deck build: laying the deck boards",
+  "pool-deck-stairs": "Pool deck build: stairs",
+  "pool-deck-finished": "Finished pool deck with railings",
+  "pool-deck-small-01": "Small pool deck",
+  "pool-deck-small-02": "Small pool deck with steps",
+  "front-porch-cedar-columns": "Front porch with new cedar columns",
+  "outdoor-kitchen-cedar-ceiling": "Outdoor kitchen with a cedar plank ceiling",
+  "porch-steps-railing-repair": "Rebuilt porch steps and railing",
+  "interior-door-install": "Interior door installation"
+ },
+ "repairs": {
+  "wood-rot-sill-plate-before": "Rotted sill plate found behind the siding",
+  "wood-rot-sheathing-removal": "Removing rotted sheathing",
+  "siding-repair-house-wrap": "New sheathing and house wrap before siding",
+  "siding-repair-in-progress": "Installing new siding",
+  "siding-repair-finished-gray": "Siding repaired and painted to match",
+  "gray-home-before-trim-repair": "Damaged trim above a porch roof before repair",
+  "soffit-trim-repair-painting": "Soffit and trim repair, primed and painted"
+ },
+ "remodeling": {
+  "staircase-before": "Staircase before the makeover",
+  "staircase-after": "Staircase after new treads and painted risers",
+  "stone-tile-shower-in-progress": "Stone-look tile shower going in",
+  "bathroom-remodel-in-progress": "Bathroom remodel in progress",
+  "vinyl-plank-flooring-install": "Vinyl plank flooring installation"
+ },
+ "cleaning": {
+  "pressure-washing-vine-removal": "Pressure washing and vine removal on a home exterior"
+ },
+ "commercial": {
+  "retail-store-interior-prep": "Retail store interior sealed off for after-hours painting",
+  "retail-store-interior-finished": "Retail store interior after painting",
+  "clubhouse-interior": "Community clubhouse interior",
+  "pool-store-deck-build": "Building a display deck for a pool and spa store"
+ },
+ "team": {
+  "derwin-on-the-job-01": "Derwin Ferguson on the job",
+  "derwin-tile-shower-02": "Derwin Ferguson setting tile in a shower",
+  "crew-interior-prep-masks": "Crew prepping an interior for paint"
+ }
+}

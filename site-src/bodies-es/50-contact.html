@@ -1,0 +1,83 @@
+{"path": "contact/", "title": "Cotización gratis de pintura en Orlando | Ferguson's", "desc": "Pida un estimado gratis de pintura, carpintería, reparaciones, remodelación o lavado a presión en Orlando y Central Florida. Llame al (321) 202-7225.", "nav": "contact", "extra": "<script src=\"https://challenges.cloudflare.com/turnstile/v0/api.js\" async defer></script>\n", "crumb": "Contacto"}
+<section class="banner">
+  <div class="wrap">
+    <h1>Pida una cotización gratis</h1>
+    <p>Cuéntenos sobre el trabajo. Normalmente respondemos en un día hábil.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split split--top">
+    <form class="form" method="post" action="/api/quote" enctype="multipart/form-data" data-quote-form>
+      <div class="row">
+        <div><label for="name">Nombre</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+        <div><label for="phone">Teléfono</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <div class="row">
+        <div><label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" maxlength="200"></div>
+        <div><label for="city">Ciudad o dirección</label><input id="city" name="city" autocomplete="address-level2" maxlength="200"></div>
+      </div>
+      <div>
+        <label for="service">¿Qué necesita?</label>
+        <select id="service" name="service">
+          <option value="Exterior painting">Pintura exterior</option>
+          <option value="Interior painting">Pintura interior</option>
+          <option value="Stucco repair">Reparación de estuco</option>
+          <option value="Popcorn ceiling removal">Remoción de techo de popcorn (techo texturizado)</option>
+          <option value="Wood rot, fascia or siding repair">Reparación de madera podrida, fascia o revestimiento (siding)</option>
+          <option value="Drywall or handyman repairs">Reparaciones de drywall o arreglos generales</option>
+          <option value="Pool deck or carpentry">Deck de piscina o carpintería</option>
+          <option value="Remodeling">Remodelación</option>
+          <option value="Pressure washing">Lavado a presión</option>
+          <option value="Vacation rental work">Trabajos en casa de alquiler vacacional</option>
+          <option value="Commercial or HOA/POA work">Trabajos comerciales o para HOA o POA (asociación de propietarios)</option>
+          <option value="Something else">Otra cosa</option>
+        </select>
+      </div>
+      <div>
+        <label for="details">Detalles del proyecto <span class="opt">(tamaño, fechas, cualquier cosa que debamos saber)</span></label>
+        <textarea id="details" name="details" maxlength="4000"></textarea>
+      </div>
+      <div>
+        <label for="photos">Fotos <span class="opt">(opcional, hasta 5; nos ayudan a cotizar el trabajo)</span></label>
+        <input id="photos" name="photos" type="file" accept="image/*" multiple>
+      </div>
+      <div class="row">
+        <div><label for="access">Código del portón o notas de acceso <span class="opt">(opcional)</span></label><input id="access" name="access" maxlength="300" autocomplete="off"></div>
+        <div><label for="heard">¿Cómo supo de nosotros? <span class="opt">(opcional)</span></label>
+          <select id="heard" name="heard">
+            <option value="">Elija una opción</option>
+            <option value="Google search">Búsqueda en Google</option>
+            <option value="Google Maps">Google Maps</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Friend or neighbor">Un amigo o vecino</option>
+            <option value="Saw our work">Vio nuestro trabajo</option>
+            <option value="Other">Otro</option>
+          </select>
+        </div>
+      </div>
+      <fieldset>
+        <legend>¿Cómo prefiere que lo contactemos?</legend>
+        <div class="radios">
+          <label><input type="radio" name="contact_pref" value="Call" checked> Llamada</label>
+          <label><input type="radio" name="contact_pref" value="Text"> Mensaje de texto</label>
+          <label><input type="radio" name="contact_pref" value="Email"> Correo electrónico</label>
+        </div>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFgF7yqwi7Slx0f3"></div>
+      <p class="form-status" role="alert" hidden></p>
+      <div><button class="btn btn--orange" type="submit">Enviar mi solicitud de cotización</button></div>
+      <p class="opt">Incluya un número de teléfono o un correo electrónico para poder comunicarnos con usted.</p>
+    </form>
+    <aside class="contact-card">
+      <h2>¿Prefiere hablar?</h2>
+      <dl>
+        <div><dt>Llame</dt><dd><a href="tel:+13212027225">(321) 202-7225</a></dd></div>
+        <div><dt>Mensaje de texto</dt><dd><a href="sms:+13212027225">(321) 202-7225</a>. Envíe fotos del trabajo para una cotización más rápida.</dd></div>
+        <div><dt>Correo electrónico</dt><dd><a href="mailto:derwin@fergusonspainting.com">derwin@fergusonspainting.com</a></dd></div>
+        <div><dt>Horario</dt><dd>Lunes a viernes, 8am–5pm</dd></div>
+        <div><dt>Área de servicio</dt><dd>Orlando, Kissimmee, Celebration, Reunion, Lake Mary y todo el área de Central Florida</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>

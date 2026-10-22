@@ -41,28 +41,59 @@ if (box && typeof box.showModal === "function") {
 }
 
 // Quote form: submit with fetch so errors show inline; falls back to a normal POST without JS
+const MSG = {
+  en: {
+    contact: "Add a phone number or an email so we can reach you.",
+    big: (n) => `"${n}" is over 8 MB. Attach a smaller photo.`,
+    many: "Attach up to 5 photos, 20 MB total.",
+    sending: "Sending…",
+    send: "Send my quote request",
+    failed: "Your request didn't go through. Call (321) 202-7225 or email derwin@fergusonspainting.com.",
+    offline: "Your request didn't go through. Check your connection, or call (321) 202-7225.",
+  },
+  es: {
+    contact: "Agregue un teléfono o un email para poder comunicarnos con usted.",
+    big: (n) => `"${n}" pesa más de 8 MB. Adjunte una foto más pequeña.`,
+    many: "Adjunte hasta 5 fotos, 20 MB en total.",
+    sending: "Enviando…",
+    send: null,
+    failed: "Su solicitud no se envió. Llame al (321) 202-7225 o escriba a derwin@fergusonspainting.com.",
+    offline: "Su solicitud no se envió. Revise su conexión o llame al (321) 202-7225.",
+  },
+  pt: {
+    contact: "Informe um telefone ou e-mail para entrarmos em contato.",
+    big: (n) => `"${n}" tem mais de 8 MB. Anexe uma foto menor.`,
+    many: "Anexe até 5 fotos, 20 MB no total.",
+    sending: "Enviando…",
+    send: null,
+    failed: "Sua solicitação não foi enviada. Ligue para (321) 202-7225 ou escreva para derwin@fergusonspainting.com.",
+    offline: "Sua solicitação não foi enviada. Verifique sua conexão ou ligue para (321) 202-7225.",
+  },
+};
 const form = document.querySelector("[data-quote-form]");
 if (form) {
+  const t = MSG[form.dataset.lang] || MSG.en;
   const status = form.querySelector(".form-status");
   const button = form.querySelector("button[type=submit]");
+  const label = button.textContent;
   const show = (msg) => { status.textContent = msg; status.hidden = false; };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.phone.value.trim() && !form.email.value.trim()) {
-      show("Add a phone number or an email so we can reach you.");
+      show(t.contact);
       form.phone.focus();
       return;
     }
     const photos = form.photos ? [...form.photos.files] : [];
     const big = photos.find((f) => f.size > 8 * 1024 * 1024);
     if (photos.length > 5 || big || photos.reduce((n, f) => n + f.size, 0) > 20 * 1024 * 1024) {
-      show(big ? `"${big.name}" is over 8 MB. Attach a smaller photo.` : "Attach up to 5 photos, 20 MB total.");
+      show(big ? t.big(big.name) : t.many);
       form.photos.focus();
       return;
     }
     button.disabled = true;
-    button.textContent = "Sending…";
+    button.textContent = t.sending;
     try {
       const res = await fetch(form.action, {
         method: "POST",
@@ -71,15 +102,15 @@ if (form) {
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.ok) {
-        window.location.href = "/thanks/";
+        window.location.href = form.dataset.thanks || "/thanks/";
         return;
       }
-      show(data.error || "Your request didn't go through. Call (321) 202-7225 or email derwin@fergusonspainting.com.");
+      show(data.error || t.failed);
     } catch {
-      show("Your request didn't go through. Check your connection, or call (321) 202-7225.");
+      show(t.offline);
     }
     if (window.turnstile) window.turnstile.reset();
     button.disabled = false;
-    button.textContent = "Send my quote request";
+    button.textContent = label;
   });
 }

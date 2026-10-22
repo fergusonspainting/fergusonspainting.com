@@ -1,0 +1,79 @@
+{
+ "_cats": {
+  "painting-exterior": "Pintura",
+  "carpentry": "Carpintaria e decks",
+  "repairs": "Reparos",
+  "remodeling": "Reformas",
+  "cleaning": "Limpeza",
+  "commercial": "Comercial"
+ },
+ "_all": "Todos os trabalhos",
+ "painting-exterior": {
+  "450-burma-encore-reunion-west-front": "Parte externa pintada pela Ferguson's na 450 Burma, Encore at Reunion West (foto: cortesia da 450 Burma)",
+  "450-burma-encore-reunion-west-front-night": "450 Burma ao entardecer, Encore at Reunion West: parte externa pintada pela Ferguson's (foto: cortesia da 450 Burma)",
+  "victorian-blue-repaint": "Casa vitoriana azul depois de uma repintura externa em Celebration",
+  "victorian-pink-repaint-finished": "Casa vitoriana rosa depois de uma repintura externa em Celebration",
+  "victorian-pink-repaint-in-progress": "Casa vitoriana rosa durante a repintura externa",
+  "gray-home-finished-porch-roof": "Casa cinza de dois andares com o telhado de metal da varanda recém-pintado",
+  "gray-home-painting-in-progress": "Repintura de uma casa cinza de dois andares com varanda na frente",
+  "stucco-repaint-two-story-finished": "Casa de stucco de dois andares depois de uma repintura externa",
+  "stucco-repaint-two-story-prep": "Casa de stucco de dois andares durante a preparação para a pintura",
+  "stucco-repaint-yellow-prep": "Preparação de uma casa de stucco amarela para uma nova cor",
+  "stucco-repaint-garage": "Casa de stucco e garagem depois de uma repintura",
+  "stucco-repaint-pool-home-in-progress": "Repintura de uma casa de stucco com piscina",
+  "coral-stucco-home-repaint": "Casa de stucco coral depois de uma repintura externa",
+  "ranch-repaint-dark-garage-door": "Casa térrea repintada com porta de garagem grafite",
+  "porch-home-finished": "Casa com varanda depois de uma repintura externa completa",
+  "porch-home-painting-in-progress": "Pintura dos acabamentos e colunas de uma varanda que contorna a casa",
+  "double-porch-columns": "Varanda de dois andares com colunas e corrimãos recém-pintados",
+  "carriage-house-pool": "Casa anexa junto à piscina depois de uma repintura externa",
+  "mediterranean-estate": "Parte externa de uma mansão em estilo mediterrâneo",
+  "lanai-repaint": "Repintura de lanai",
+  "screened-pool-lanai": "Lanai de piscina telado depois da pintura",
+  "metal-roof-painting": "Pintura de um telhado de metal",
+  "spray-painting-garage": "Pintura a pistola da parte externa de uma garagem"
+ },
+ "carpentry": {
+  "pool-deck-posts": "Construção de deck da piscina: fixação dos postes",
+  "pool-deck-framing": "Construção de deck da piscina: estrutura",
+  "pool-deck-boards": "Construção de deck da piscina: instalação das tábuas",
+  "pool-deck-stairs": "Construção de deck da piscina: escada",
+  "pool-deck-finished": "Deck da piscina pronto, com corrimãos",
+  "pool-deck-small-01": "Deck de piscina pequeno",
+  "pool-deck-small-02": "Deck de piscina pequeno com degraus",
+  "front-porch-cedar-columns": "Varanda da frente com novas colunas de cedro",
+  "outdoor-kitchen-cedar-ceiling": "Cozinha externa com forro de tábuas de cedro",
+  "porch-steps-railing-repair": "Degraus e corrimão de varanda refeitos",
+  "interior-door-install": "Instalação de porta interna"
+ },
+ "repairs": {
+  "wood-rot-sill-plate-before": "Viga de base podre encontrada atrás do siding",
+  "wood-rot-sheathing-removal": "Remoção de chapas de vedação podres",
+  "siding-repair-house-wrap": "Chapas de vedação novas e manta antes do siding",
+  "siding-repair-in-progress": "Instalação de siding novo",
+  "siding-repair-finished-gray": "Siding reparado e pintado para combinar",
+  "gray-home-before-trim-repair": "Acabamento danificado acima do telhado da varanda, antes do reparo",
+  "soffit-trim-repair-painting": "Reparo de sofito e acabamento, com primer e pintura"
+ },
+ "remodeling": {
+  "staircase-before": "Escada antes da renovação",
+  "staircase-after": "Escada depois dos novos degraus e espelhos pintados",
+  "stone-tile-shower-in-progress": "Box com revestimento que imita pedra sendo instalado",
+  "bathroom-remodel-in-progress": "Reforma de banheiro em andamento",
+  "vinyl-plank-flooring-install": "Instalação de piso vinílico em réguas"
+ },
+ "cleaning": {
+  "pressure-washing-vine-removal": "Lavagem com alta pressão e remoção de trepadeiras na parte externa de uma casa"
+ },
+ "commercial": {
+  "retail-store-interior-prep": "Interior de loja isolado para pintura fora do horário comercial",
+  "retail-store-interior-finished": "Interior da loja depois da pintura",
+  "clubhouse-interior": "Interior de clubhouse comunitário",
+  "pool-store-deck-build": "Construção de um deck de exposição para uma loja de piscinas e spas"
+ },
+ "team": {
+  "derwin-on-the-job-01": "Derwin Ferguson no trabalho",
+  "derwin-tile-shower-02": "Derwin Ferguson assentando revestimento em um box",
+  "crew-interior-prep-masks": "Equipe preparando um interior para pintura"
+ }
+}
