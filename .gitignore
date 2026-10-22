@@ -1,0 +1,12 @@
+# Facebook overview sheets: reference only, not ours to publish
+images/facebook-index/
+# Local/OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+.wrangler/
+.dev.vars
+__pycache__/
+# Unblurred original photos (house numbers, other businesses' names).
+# The repo is public, so only the blurred .webp copies in public/ are committed.
+images/gallery/

@@ -1,0 +1,4 @@
+# www -> apex is handled by a Cloudflare Redirect Rule, not here.
+/quote   /contact/   301
+/book    /contact/   301
+/fb      https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/   302
