@@ -56,7 +56,7 @@
 </section>
 <section class="section">
   <div class="wrap split split--top">
-    <form class="form" method="post" action="/api/quote" data-quote-form>
+    <form class="form" method="post" action="/api/quote" enctype="multipart/form-data" data-quote-form>
       <div class="row">
         <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
         <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
@@ -70,17 +70,39 @@
         <select id="service" name="service">
           <option>Exterior painting</option>
           <option>Interior painting</option>
+          <option>Stucco repair</option>
+          <option>Popcorn ceiling removal</option>
+          <option>Wood rot, fascia or siding repair</option>
+          <option>Drywall or handyman repairs</option>
           <option>Pool deck or carpentry</option>
-          <option>Wood rot or siding repair</option>
           <option>Remodeling</option>
-          <option>Pressure washing or cleaning</option>
-          <option>Commercial work</option>
+          <option>Pressure washing</option>
+          <option>Vacation rental work</option>
+          <option>Commercial or HOA/POA work</option>
           <option>Something else</option>
         </select>
       </div>
       <div>
         <label for="details">Project details <span class="opt">(size, timing, anything we should know)</span></label>
         <textarea id="details" name="details" maxlength="4000"></textarea>
+      </div>
+      <div>
+        <label for="photos">Photos <span class="opt">(optional, up to 5; they help us price the job)</span></label>
+        <input id="photos" name="photos" type="file" accept="image/*" multiple>
+      </div>
+      <div class="row">
+        <div><label for="access">Gate code or access notes <span class="opt">(optional)</span></label><input id="access" name="access" maxlength="300" autocomplete="off"></div>
+        <div><label for="heard">How did you hear about us? <span class="opt">(optional)</span></label>
+          <select id="heard" name="heard">
+            <option value="">Choose one</option>
+            <option>Google search</option>
+            <option>Google Maps</option>
+            <option>Facebook</option>
+            <option>Friend or neighbor</option>
+            <option>Saw our work</option>
+            <option>Other</option>
+          </select>
+        </div>
       </div>
       <fieldset>
         <legend>How should we reach you?</legend>
@@ -147,6 +169,7 @@
         <li><a href="/services/carpentry/">Pool decks &amp; carpentry</a></li>
         <li><a href="/services/remodeling/">Remodeling</a></li>
         <li><a href="/services/pressure-washing/">Pressure washing</a></li>
+        <li><a href="/services/vacation-rental-painting/">Vacation rental painting</a></li>
         <li><a href="/commercial/">Commercial &amp; HOA/POA</a></li>
       </ul>
     </div>
@@ -158,7 +181,7 @@
         <li><a href="/areas/celebration/">Celebration</a></li>
         <li><a href="/areas/reunion/">Reunion</a></li>
         <li><a href="/areas/lake-mary/">Lake Mary</a></li>
-        <li><a href="/house-painting-cost-orlando/">Painting cost guide</a></li>
+        <li><a href="/guides/">Homeowner guides</a></li>
       </ul>
     </div>
     <p class="legal">© 2026 Ferguson's Painting &amp; Cleaning, Inc. Serving Central Florida since 2012. Fully insured.</p>

@@ -382,6 +382,30 @@ Cloudflare now labels Pages "legacy", so the site runs as a Worker with static a
 
 ---
 
+## 9b. SEO roadmap (Oct 22, 2026): ranked from a survey of ~160 Orlando painting/handyman companies
+
+Method: 3 research passes, 60+ searches, about 40 competitor sites inspected in depth (schema, forms, reviews, page structure), plus our own speed audit (first paint 0.68 s, no layout shift). Limit: the research tools can't see Google's map pack.
+
+| # | Action | Why (evidence) | Status |
+|---|---|---|---|
+| 1 | **Grow Google reviews** (goal 50+, then 100+) and show the count | Leaders show 108–300+ reviews in the hero; ours is 21. Reviews are the #1 map-pack lever | Count on site ✅. Review-request routine: owner |
+| 2 | **Google Business Profile + Search Console** | GBP drives the map pack. Search Console gets the 29 pages indexed | Owner (to do) |
+| 3 | **Vacation-rental painting page** (Kissimmee, Reunion, Encore) | "Painters Reunion FL", "Encore Reunion painting" and "vacation home painting Kissimmee" have no company competing | ✅ /services/vacation-rental-painting/ |
+| 4 | **One page per repair type** | Mr. Handyman's interlinked repair pages win handyman searches (8/9 sites) | ✅ drywall, fascia/soffit, siding pages |
+| 5 | **City depth** (ZIPs, neighborhoods, local history) | CertaPro's city pages list ZIPs and sub-areas; ours had none | ✅ added to all 4 city pages |
+| 6 | **Guides for weak searches** | "Best paint for Florida stucco" and "best time to paint" have weak competition | ✅ /guides/ (2 new + cost guide) |
+| 7 | **Quote form: photos, gate code, referral source** | Photo upload 0/9 handyman sites; gate code suits gated Reunion/Celebration | ✅ live |
+| 8 | **Technical** (descriptions ≤155, lighter images, Article/FAQ schema) | 17 descriptions were truncated; images were 1 MB on high-res screens | ✅ |
+| 9 | **Real price ranges on the cost guide** | Cost searches are all directories with real numbers; no company competes | Needs Derwin's typical ranges |
+| 10 | **Project write-ups by location** with photos | Paint Bros ranks with 12 named project pages | Needs photos + homeowner OK (450 Burma photos?) |
+| 11 | **Text button** (`sms:` link) | Paint Bros, Masterpiece and Shack Shine lead with "Call/Text" | Confirm (321) 202-7225 receives texts |
+| 12 | **Celebration color-approval guide** | That search shows only the town's PDF | Needs the current CROA process confirmed |
+| 13 | **Fence/deck staining and cabinet painting pages** | Weak searches (staining); many specialists (cabinets) | Only if Derwin offers them |
+| 14 | **ChampionsGate / Davenport / St. Cloud pages** | No painting company ranks for ChampionsGate | Only if he serves them |
+| 15 | **Spanish page for Kissimmee** | 0/24 competitors have one; strong local demand | Only if he can serve in Spanish |
+| 16 | **Listings**: Yelp, Angi/HomeAdvisor, Thumbtack, Houzz, BBB, Nextdoor, Expertise.com | These directories hold many of the top-10 spots | Owner |
+| — | **Don't copy:** license numbers, warranties, awards, "$0 deposit", response-time promises, self-hosted review stars | Unverifiable, or ignored by Google | — |
+
 ## 10. Launch checklist
 
 - [ ] Business facts confirmed (§11)

@@ -54,6 +54,13 @@ if (form) {
       form.phone.focus();
       return;
     }
+    const photos = form.photos ? [...form.photos.files] : [];
+    const big = photos.find((f) => f.size > 8 * 1024 * 1024);
+    if (photos.length > 5 || big || photos.reduce((n, f) => n + f.size, 0) > 20 * 1024 * 1024) {
+      show(big ? `"${big.name}" is over 8 MB. Attach a smaller photo.` : "Attach up to 5 photos, 20 MB total.");
+      form.photos.focus();
+      return;
+    }
     button.disabled = true;
     button.textContent = "Sending…";
     try {
