@@ -398,7 +398,7 @@ Method: 3 research passes, 60+ searches, about 40 competitor sites inspected in 
 | 8 | **Technical** (descriptions ≤155, lighter images, Article/FAQ schema) | 17 descriptions were truncated; images were 1 MB on high-res screens | ✅ |
 | 9 | **Real price ranges on the cost guide** | Cost searches are all directories with real numbers; no company competes | Needs Derwin's typical ranges |
 | 10 | **Project write-ups by location** with photos | Paint Bros ranks with 12 named project pages | Needs photos + homeowner OK (450 Burma photos?) |
-| 11 | **Text button** (`sms:` link) | Paint Bros, Masterpiece and Shack Shine lead with "Call/Text" | Confirm (321) 202-7225 receives texts |
+| 11 | **Text button** (`sms:` link) | Paint Bros, Masterpiece and Shack Shine lead with "Call/Text" | ✅ Texting confirmed; Text buttons on every page |
 | 12 | **Celebration color-approval guide** | That search shows only the town's PDF | Needs the current CROA process confirmed |
 | 13 | **Fence/deck staining and cabinet painting pages** | Weak searches (staining); many specialists (cabinets) | Only if Derwin offers them |
 | 14 | **ChampionsGate / Davenport / St. Cloud pages** | No painting company ranks for ChampionsGate | Only if he serves them |
