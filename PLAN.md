@@ -411,6 +411,62 @@ Method: 3 research passes, 60+ searches, about 40 competitor sites inspected in 
 | 16 | **Listings**: Yelp, Angi/HomeAdvisor, Thumbtack, Houzz, BBB, Nextdoor, Expertise.com | These directories hold many of the top-10 spots | Owner |
 | — | **Don't copy:** license numbers, warranties, awards, "$0 deposit", response-time promises, self-hosted review stars | Unverifiable, or ignored by Google | — |
 
+## 9c. Ranking plan (Oct 22, 2026): deep research round
+
+Three research passes: (1) industry ranking-factor studies (Whitespark 2026 survey of 47 experts, Google's own guidance, BrightLocal 2026 consumer survey, Insites 10,000-business AI study, Sterling Sky); (2) 14 best-in-class national contractor sites; (3) an audit of every listing of the business found online plus 34 citation/link opportunities. Full agent reports are in the session; this is the ranked result.
+
+### What the evidence says
+- Map-pack rank is driven by the Google Business Profile (category, completeness, website link), proximity, review **recency and velocity**, and behavioral signals. Links and citations weigh less (about 8% and 6% in the expert survey). Technical SEO is already done.
+- AI assistants (ChatGPT, Perplexity, Google AI Mode) recommend by **review volume**: recommended businesses averaged 133 Google reviews vs. 11 for those ignored; rating barely mattered. ChatGPT leans on BBB; Bing Places feeds Copilot. Our own site is the most-cited source type, so page depth helps.
+- Consumers: 47% won't use a business with fewer than 20 reviews; 74% want a review from the last 3 months; 89% expect owner replies.
+- Google's public GBP Q&A was retired (Nov 2025). FAQs on the site now serve that role.
+- Never add review/AggregateRating schema for reviews on our own site (Google: ineligible, Sept 2026). Never gate or incentivize reviews.
+
+### Listing audit (what's wrong today)
+| Listing | Problem |
+|---|---|
+| **Google Business Profile** | Name "Ferguson's painting , cleaning and home repairs"; website points to a dead `business.site` page; hours "12am–midnight"; **street address shown**; 21 reviews |
+| BBB | Website = Facebook page; address shown; 0 reviews; not accredited |
+| Nextdoor | Old Gmail; no website; address shown |
+| Angi / HomeAdvisor | "40 years experience"; address shown; 1 review (2012) |
+| Porch | Category "Home Builder", "30 years" |
+| Facebook | Location "Celebration, FL"; "over 20 years"; no website |
+| Christians In Business | Dead old domain, old Gmail |
+| AACCCF (Black chamber) | Member listing on a dead domain; membership may have lapsed |
+| Not found | Yelp, Houzz, Thumbtack, Bing Places, Apple Maps, Yellow Pages, Manta |
+| Indexing | `site:fergusonspainting.com` returns nothing yet (site is days old; no Search Console) |
+
+Systemic: five name variants, three "years in business" figures (13/20/30/40), two dead websites, the home address on 6+ sites.
+
+### NAP standard (use this everywhere, exactly)
+- Name: **Ferguson's Painting & Cleaning** (legal: Ferguson's Painting & Cleaning, Inc.). "Home repairs" goes in categories/description, not the name. Rename existing listings; never create duplicates (the 21 reviews stay with the renamed profile).
+- Phone (321) 202-7225 · https://fergusonspainting.com · derwin@fergusonspainting.com (retire the Gmail)
+- Address: none public (service-area business). **Decision needed:** the address is already on Google, BBB, Nextdoor and Angi; either remove it everywhere or accept it everywhere.
+- Founded 2012 ("since 2012"); drop the 20/30/40-year claims. Hours Mon–Fri 8am–5pm. Categories: Painter (primary), Handyman, Pressure washing service, Drywall contractor.
+- Description (≤750 chars, no license claim): "Ferguson's Painting & Cleaning is an owner-operated, fully insured painting and home-repair company serving Orlando and Central Florida since 2012. Derwin Ferguson personally handles exterior and interior painting, stucco and drywall repair, popcorn ceiling removal, wood rot repair, pressure washing, carpentry and vacation-rental turnarounds in Orlando, Kissimmee, Celebration, Reunion, ChampionsGate and Davenport. Free written estimates. Spanish and Portuguese speakers welcome (we reply in English). Call or text (321) 202-7225."
+
+### Ranked actions
+| # | Action | Owner | Effort | Impact window |
+|---|---|---|---|---|
+| 1 | **Fix the Google Business Profile**: name, website → fergusonspainting.com, hours, hide address, primary category Painter + secondaries, services with descriptions, 10+ job photos, quote link, description above | Randall/Derwin | 2–3 h | Days to weeks |
+| 2 | **Review routine**: ask at every walkthrough + same-day text with the Google review link; target 2–4 new reviews/month (21 → 50 in a year); reply to every review within 48 h; also seed Facebook, Nextdoor, BBB | Derwin | Ongoing | 1–3 months, compounding |
+| 3 | **Search Console + Bing Webmaster**: verify, submit sitemap.xml; Bing Places "import from Google" | Randall | 1 h | Indexing in days |
+| 4 | **Fix the listings above** (BBB, Nextdoor, Angi, Porch, Facebook, Christians In Business, LinkedIn) to the NAP standard | Randall | 3–4 h | 1–3 months |
+| 5 | **Create missing core listings**: Yelp, Apple Business Connect, Houzz, Thumbtack (free profile), Bing Places, Data Axle/Foursquare/Localeze aggregators | Randall | 3–4 h | 1–3 months (AI grounding) |
+| 6 | **Real cost ranges** on the cost guide (Orlando table by home size, stucco vs. siding, per-room interior), dated, with a planning-only disclaimer | Derwin → Claude | 1 h of Derwin's numbers | Cost queries have no company page ranking |
+| 7 | **Local links**: Celebration business directory (townhall@ciramail.com), WeFixCelebration link via Celebration Hardware, Osceola Chamber, Hispanic Chamber ($295/yr), renew AACCCF, Expertise.com and ThreeBestRated submissions, Orlando Weekly/Sentinel best-of 2027 | Randall | 10–20 h over 6 months | 3–6 months |
+| 8 | **Vacation-rental channel**: email COI + the vacation-rental page to Four Corners property managers (Jeeves, Magical Vacation Homes, Casiola, Global Resort Homes, Top Villas, Reunion Resort Vacation Homes, Encore); join owner Facebook groups and answer repair questions | Derwin/Randall | 2 h + ongoing | Leads, not rankings |
+| 9 | **Book-an-estimate link** (Google Calendar appointment page) on GBP and the contact page; offer "virtual estimate from your photos" | Derwin → Claude | 1 h | Conversion |
+| 10 | **Project case studies** (neighborhood + ZIP, before/after, scope, days, paint used) linked from city pages; start with 450 Burma and the Celebration Victorians | Derwin photos → Claude | 1 h each | 2–4 months |
+| 11 | **Instant range estimator** (service → size → range → callback), built from item 6's numbers | Claude | 1 day | Conversion |
+| 12 | **Owner video**: 60-second phone video of Derwin on a job; truck/crew photo at a Celebration landmark | Derwin | 1 h | Trust |
+| 13 | **Local Services Ads** ("Google Guaranteed"): consider after 1–5 are done; painting has its own LSA category | Derwin ($) | — | Paid leads |
+| 14 | **Community/HOA directory** with ARB contacts and "verified <month>" stamps (A New Leaf model) | Claude + verification | 1 day | Niche searches |
+| — | **Don't**: add review stars to our pages, buy reviews, keyword-stuff the GBP name, use AI-generated photos, claim "licensed" or a warranty | | | |
+
+### Done on-site today (Oct 22)
+About page E-E-A-T section, gallery hub, review themes, home + commercial FAQs (FAQ schema), process block links to About, "More from Ferguson's" block, guide bylines, color-choice guide (EN/ES/PT), redirect for /guides/house-painting-cost-orlando/.
+
 ## 10. Launch checklist
 
 - [ ] Business facts confirmed (§11)
