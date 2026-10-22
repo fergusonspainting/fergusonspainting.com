@@ -466,6 +466,7 @@ Systemic: five name variants, three "years in business" figures (13/20/30/40), t
 | — | **Don't**: add review stars to our pages, buy reviews, keyword-stuff the GBP name, use AI-generated photos, claim "licensed" or a warranty | | | |
 
 ### Done on-site today (Oct 22)
+AI readiness (later Oct 22): `/llms.txt` business summary with links, `robots.txt` explicitly allows GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot, Bingbot and others, Google Analytics 4 tag. **Randall to check** Cloudflare → Security → Bots / AI Crawl Control is not blocking AI crawlers.
 About page E-E-A-T section, gallery hub, review themes, home + commercial FAQs (FAQ schema), process block links to About, "More from Ferguson's" block, guide bylines, color-choice guide (EN/ES/PT), redirect for /guides/house-painting-cost-orlando/.
 
 ## 10. Launch checklist
