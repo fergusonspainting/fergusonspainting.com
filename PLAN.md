@@ -25,6 +25,7 @@
 | Languages (Oct 22) | English, Spanish (`/es/`) and Brazilian Portuguese (`/pt-br/`): every page, plus custom ES/PT landing pages. **The team replies in English**, and translated pages say so. Quote emails are tagged [ES]/[PT] |
 | Service area (Oct 22) | 19 communities: Orlando, Kissimmee, Celebration, Reunion, Reunion West/Encore, ChampionsGate, Davenport, Hunter's Creek, Dr. Phillips, Golden Oak (Lake Buena Vista), Windermere, Lake Butler (estate homes), Horizon West, Winter Garden, Winter Park, Maitland, Altamonte Springs, Longwood, Lake Mary |
 | Site source | Page content in `site-src/` (3 languages); `python tools/build.py` regenerates `public/` |
+| Google Analytics 4 (Oct 22) | Measurement ID G-DDY4TM97L3, loaded from `public/assets/js/ga.js` (no inline script; CSP allows googletagmanager/google-analytics). Events: `generate_lead` on /thanks/ pages, `call_click`, `sms_click`, `email_click`. Cloudflare Web Analytics stays on too |
 | Customer confirmation (Oct 22) | Quote form sends the customer an automatic confirmation in their language; the contact and thanks pages explain the next steps (reply within one business day; open 24 h Mon–Sat, closed Sunday). Off switch: Worker variable `CONFIRM_EMAIL=off` |
 | Accessibility (Oct 22) | axe-core WCAG 2.2 AA audit of all pages: 0 violations after fixes (landmarks, heading order, field contrast, review language tags, focus not obscured) |
 

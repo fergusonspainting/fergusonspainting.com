@@ -206,6 +206,8 @@ def expand(body, lang):
 import hashlib
 CSS_V = hashlib.sha256((PUB / "assets/css/site.css").read_bytes()).hexdigest()[:10]
 JS_V = hashlib.sha256((PUB / "assets/js/site.js").read_bytes()).hexdigest()[:10]
+GA_V = hashlib.sha256((PUB / "assets/js/ga.js").read_bytes()).hexdigest()[:10]
+GA_ID = "G-DDY4TM97L3"
 
 # ---------- page index ----------
 PAGES = {lang: {} for lang in L}
@@ -275,6 +277,8 @@ def head(lang, meta, url, alternates, extra, preload=""):
 <link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 {preload}<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 <script src="/assets/js/site.js?v={JS_V}" defer></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script src="/assets/js/ga.js?v={GA_V}"></script>
 {extra}</head>
 """
 
