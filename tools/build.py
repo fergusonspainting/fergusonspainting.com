@@ -142,16 +142,30 @@ def caption(key, lang):
     return CAPTIONS[lang][cat][name]
 
 
+VARIANTS = ("-w400", "-sm", "-w750", "-md", "")
+SIZES = {
+    "eager": "(max-width: 820px) 100vw, 50vw",                              # hero
+    "wide": "(max-width: 820px) calc(100vw - 2rem), 560px",                 # half of a two-column split
+    "thumb": "(max-width: 600px) calc(50vw - 1.5rem), 260px",               # photo grids / gallery
+    "": "(max-width: 560px) calc(100vw - 2rem), (max-width: 900px) 45vw, 380px",  # cards, pairs, steps
+}
+
+
+def srcset(key):
+    parts = []
+    for v in VARIANTS:
+        f = IMG / f"{key}{v}.webp"
+        if f.exists():
+            parts.append((Image.open(f).size[0], f"/assets/img/gallery/{key}{v}.webp"))
+    return ", ".join(f"{u} {w}w" for w, u in sorted(set(parts)))
+
+
 def img(key, lang, alt=None, mode=""):
-    full = Image.open(IMG / f"{key}.webp").size
-    md = Image.open(IMG / f"{key}-md.webp").size
     sm = Image.open(IMG / f"{key}-sm.webp").size
     alt = escape(alt or caption(key, lang), quote=True)
-    sizes = "(max-width: 820px) 100vw, 50vw" if mode in ("eager", "wide") else "(max-width: 600px) 100vw, 400px"
     load = 'fetchpriority="high"' if mode == "eager" else 'loading="lazy" decoding="async"'
-    return (f'<img src="/assets/img/gallery/{key}-sm.webp" '
-            f'srcset="/assets/img/gallery/{key}-sm.webp {sm[0]}w, /assets/img/gallery/{key}-md.webp {md[0]}w, /assets/img/gallery/{key}.webp {full[0]}w" '
-            f'sizes="{sizes}" width="{sm[0]}" height="{sm[1]}" alt="{alt}" {load}>')
+    return (f'<img src="/assets/img/gallery/{key}-sm.webp" srcset="{srcset(key)}" sizes="{SIZES.get(mode, SIZES[""])}" '
+            f'width="{sm[0]}" height="{sm[1]}" alt="{alt}" {load}>')
 
 
 def gallery(lang):
@@ -163,7 +177,7 @@ def gallery(lang):
     for cat in CAT_NAMES:
         for name in CAPTIONS_EN[cat]:
             key = f"{cat}/{name}"
-            out.append(f'<a href="/assets/img/gallery/{key}.webp" data-cat="{cat}" data-caption="{escape(caption(key, lang), quote=True)}">{img(key, lang)}</a>')
+            out.append(f'<a href="/assets/img/gallery/{key}.webp" data-cat="{cat}" data-caption="{escape(caption(key, lang), quote=True)}">{img(key, lang, mode="thumb")}</a>')
     out.append('</div>')
     return "\n".join(out)
 
@@ -182,9 +196,16 @@ def process(lang):
 
 
 def expand(body, lang):
+    # Images inside photo grids are small thumbnails: give them the "thumb" sizes hint
+    body = re.sub(r'<div class="grid-photos">.*?</div>\n',
+                  lambda m: re.sub(r'\[\[img (\S+)( "[^"]*")?\]\]', r'[[img \1\2 thumb]]', m[0]), body, flags=re.S)
     body = body.replace("[[gallery]]", gallery(lang)).replace("[[process]]", process(lang))
-    return re.sub(r'\[\[img (\S+)(?: "([^"]*)")?(?: (eager|wide))?\]\]', lambda m: img(m[1], lang, m[2], m[3] or ""), body)
+    return re.sub(r'\[\[img (\S+)(?: "([^"]*)")?(?: (eager|wide|thumb))?\]\]', lambda m: img(m[1], lang, m[2], m[3] or ""), body)
 
+
+import hashlib
+CSS_V = hashlib.sha256((PUB / "assets/css/site.css").read_bytes()).hexdigest()[:10]
+JS_V = hashlib.sha256((PUB / "assets/js/site.js").read_bytes()).hexdigest()[:10]
 
 # ---------- page index ----------
 PAGES = {lang: {} for lang in L}
@@ -223,7 +244,7 @@ def localize_links(html, lang):
 
 
 # ---------- head / header / footer ----------
-def head(lang, meta, url, alternates, extra):
+def head(lang, meta, url, alternates, extra, preload=""):
     s = L[lang]
     robots = '<meta name="robots" content="noindex">\n' if meta.get("noindex") else ""
     alt_links = "".join(f'<link rel="alternate" hreflang="{h}" href="{u}">\n' for h, u in alternates)
@@ -250,11 +271,10 @@ def head(lang, meta, url, alternates, extra):
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
-<script src="/assets/js/site.js" defer></script>
+<link rel="preload" href="/assets/fonts/barlow-condensed-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+{preload}<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
+<script src="/assets/js/site.js?v={JS_V}" defer></script>
 {extra}</head>
 """
 
@@ -457,7 +477,10 @@ def build(lang, path):
                 alternates.append((L[x]["html"], SITE + lang_url(x, path)))
         alternates.append(("x-default", SITE + "/" + path))
     page_body = localize_links(localize_form(expand(body, lang), lang), lang)
-    html = (head(lang, meta, url, alternates, meta.get("extra", "") + schema(lang, meta, body, url))
+    hero = re.search(r'<img src="[^"]+" srcset="([^"]+)" sizes="([^"]+)"[^>]*fetchpriority="high"', page_body)
+    preload = (f'<link rel="preload" as="image" imagesrcset="{hero[1]}" imagesizes="{hero[2]}" fetchpriority="high">\n'
+               if hero else "")
+    html = (head(lang, meta, url, alternates, meta.get("extra", "") + schema(lang, meta, body, url), preload)
             + header(lang, meta) + page_body + footer(lang))
     out = out_path(lang, path)
     out.parent.mkdir(parents=True, exist_ok=True)

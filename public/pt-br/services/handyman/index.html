@@ -24,11 +24,10 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
-<script src="/assets/js/site.js" defer></script>
+<link rel="preload" href="/assets/fonts/barlow-condensed-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=5233c577cc">
+<script src="/assets/js/site.js?v=34afcd3127" defer></script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://fergusonspainting.com/pt-br/"}, {"@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://fergusonspainting.com/pt-br/services/"}, {"@type": "ListItem", "position": 3, "name": "Faz-tudo", "item": "https://fergusonspainting.com/pt-br/services/handyman/"}]}
 </script>
@@ -93,7 +92,7 @@
       <p>A maioria dos faz-tudo para no reparo. Nós terminamos o serviço: acabamentos e siding novos recebem primer e pintura para combinar, para você não ficar com um remendo que chama atenção.</p>
       <a class="btn btn--orange" href="/pt-br/contact/">Mande sua lista de reparos</a>
     </div>
-    <div class="photo"><img src="/assets/img/gallery/carpentry/porch-steps-railing-repair-sm.webp" srcset="/assets/img/gallery/carpentry/porch-steps-railing-repair-sm.webp 600w, /assets/img/gallery/carpentry/porch-steps-railing-repair-md.webp 900w, /assets/img/gallery/carpentry/porch-steps-railing-repair.webp 1265w" sizes="(max-width: 820px) 100vw, 50vw" width="600" height="450" alt="Degraus e corrimão de varanda refeitos" loading="lazy" decoding="async"></div>
+    <div class="photo"><img src="/assets/img/gallery/carpentry/porch-steps-railing-repair-sm.webp" srcset="/assets/img/gallery/carpentry/porch-steps-railing-repair-w400.webp 400w, /assets/img/gallery/carpentry/porch-steps-railing-repair-sm.webp 600w, /assets/img/gallery/carpentry/porch-steps-railing-repair-w750.webp 750w, /assets/img/gallery/carpentry/porch-steps-railing-repair-md.webp 900w, /assets/img/gallery/carpentry/porch-steps-railing-repair.webp 1265w" sizes="(max-width: 820px) calc(100vw - 2rem), 560px" width="600" height="450" alt="Degraus e corrimão de varanda refeitos" loading="lazy" decoding="async"></div>
   </div>
 </section>
 <section class="section section--primer">
@@ -111,10 +110,10 @@
   <div class="wrap">
     <h2>Reparos recentes</h2>
     <div class="grid-photos">
-      <figure><img src="/assets/img/gallery/carpentry/interior-door-install-sm.webp" srcset="/assets/img/gallery/carpentry/interior-door-install-sm.webp 337w, /assets/img/gallery/carpentry/interior-door-install-md.webp 506w, /assets/img/gallery/carpentry/interior-door-install.webp 711w" sizes="(max-width: 600px) 100vw, 400px" width="337" height="600" alt="Instalação de porta interna" loading="lazy" decoding="async"><figcaption>Instalação de porta interna</figcaption></figure>
-      <figure><img src="/assets/img/gallery/repairs/soffit-trim-repair-painting-sm.webp" srcset="/assets/img/gallery/repairs/soffit-trim-repair-painting-sm.webp 450w, /assets/img/gallery/repairs/soffit-trim-repair-painting-md.webp 674w, /assets/img/gallery/repairs/soffit-trim-repair-painting.webp 948w" sizes="(max-width: 600px) 100vw, 400px" width="450" height="600" alt="Reparo de sofito e acabamento, com primer e pintura" loading="lazy" decoding="async"><figcaption>Reparo de sofito e acabamento</figcaption></figure>
-      <figure><img src="/assets/img/gallery/remodeling/vinyl-plank-flooring-install-sm.webp" srcset="/assets/img/gallery/remodeling/vinyl-plank-flooring-install-sm.webp 450w, /assets/img/gallery/remodeling/vinyl-plank-flooring-install-md.webp 674w, /assets/img/gallery/remodeling/vinyl-plank-flooring-install.webp 948w" sizes="(max-width: 600px) 100vw, 400px" width="450" height="600" alt="Instalação de piso vinílico em réguas" loading="lazy" decoding="async"><figcaption>Piso vinílico em réguas</figcaption></figure>
-      <figure><img src="/assets/img/gallery/repairs/siding-repair-finished-gray-sm.webp" srcset="/assets/img/gallery/repairs/siding-repair-finished-gray-sm.webp 600w, /assets/img/gallery/repairs/siding-repair-finished-gray-md.webp 900w, /assets/img/gallery/repairs/siding-repair-finished-gray.webp 1265w" sizes="(max-width: 600px) 100vw, 400px" width="600" height="450" alt="Siding reparado e pintado para combinar" loading="lazy" decoding="async"><figcaption>Siding reparado e pintado para combinar</figcaption></figure>
+      <figure><img src="/assets/img/gallery/carpentry/interior-door-install-sm.webp" srcset="/assets/img/gallery/carpentry/interior-door-install-w400.webp 225w, /assets/img/gallery/carpentry/interior-door-install-sm.webp 337w, /assets/img/gallery/carpentry/interior-door-install-w750.webp 422w, /assets/img/gallery/carpentry/interior-door-install-md.webp 506w, /assets/img/gallery/carpentry/interior-door-install.webp 711w" sizes="(max-width: 600px) calc(50vw - 1.5rem), 260px" width="337" height="600" alt="Instalação de porta interna" loading="lazy" decoding="async"><figcaption>Instalação de porta interna</figcaption></figure>
+      <figure><img src="/assets/img/gallery/repairs/soffit-trim-repair-painting-sm.webp" srcset="/assets/img/gallery/repairs/soffit-trim-repair-painting-w400.webp 300w, /assets/img/gallery/repairs/soffit-trim-repair-painting-sm.webp 450w, /assets/img/gallery/repairs/soffit-trim-repair-painting-w750.webp 562w, /assets/img/gallery/repairs/soffit-trim-repair-painting-md.webp 674w, /assets/img/gallery/repairs/soffit-trim-repair-painting.webp 948w" sizes="(max-width: 600px) calc(50vw - 1.5rem), 260px" width="450" height="600" alt="Reparo de sofito e acabamento, com primer e pintura" loading="lazy" decoding="async"><figcaption>Reparo de sofito e acabamento</figcaption></figure>
+      <figure><img src="/assets/img/gallery/remodeling/vinyl-plank-flooring-install-sm.webp" srcset="/assets/img/gallery/remodeling/vinyl-plank-flooring-install-w400.webp 300w, /assets/img/gallery/remodeling/vinyl-plank-flooring-install-sm.webp 450w, /assets/img/gallery/remodeling/vinyl-plank-flooring-install-w750.webp 562w, /assets/img/gallery/remodeling/vinyl-plank-flooring-install-md.webp 674w, /assets/img/gallery/remodeling/vinyl-plank-flooring-install.webp 948w" sizes="(max-width: 600px) calc(50vw - 1.5rem), 260px" width="450" height="600" alt="Instalação de piso vinílico em réguas" loading="lazy" decoding="async"><figcaption>Piso vinílico em réguas</figcaption></figure>
+      <figure><img src="/assets/img/gallery/repairs/siding-repair-finished-gray-sm.webp" srcset="/assets/img/gallery/repairs/siding-repair-finished-gray-w400.webp 400w, /assets/img/gallery/repairs/siding-repair-finished-gray-sm.webp 600w, /assets/img/gallery/repairs/siding-repair-finished-gray-w750.webp 750w, /assets/img/gallery/repairs/siding-repair-finished-gray-md.webp 900w, /assets/img/gallery/repairs/siding-repair-finished-gray.webp 1265w" sizes="(max-width: 600px) calc(50vw - 1.5rem), 260px" width="600" height="450" alt="Siding reparado e pintado para combinar" loading="lazy" decoding="async"><figcaption>Siding reparado e pintado para combinar</figcaption></figure>
     </div>
     <p style="margin-top:1.25rem">Problema maior de madeira podre? Veja <a href="/pt-br/services/repairs/">reparo de madeira podre e siding</a>. Planejando uma melhoria? Veja <a href="/pt-br/services/remodeling/">reformas</a>.</p>
   </div>

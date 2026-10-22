@@ -2,7 +2,7 @@
 
 - Blurs house numbers, other businesses' names/phone numbers and bystanders (BLUR map below).
 - Strips EXIF (location) by re-encoding.
-- Writes <name>.webp (full, max 1600px), <name>-md.webp (900px) and <name>-sm.webp (600px).
+- Writes <name>.webp (full, max 1600px) plus -md (900px), -w750, -sm (600px) and -w400 sizes for srcset.
 
 Run from the repo root:  python tools/optimize-images.py
 """
@@ -27,7 +27,7 @@ BLUR = {
     "commercial/pool-store-deck-build.jpg": [(945, 105, 1265, 255), (585, 390, 705, 490), (990, 465, 1050, 560)],
 }
 
-SIZES = ((1600, ""), (900, "-md"), (600, "-sm"))
+SIZES = ((1600, ""), (900, "-md"), (750, "-w750"), (600, "-sm"), (400, "-w400"))
 
 
 def blur_regions(im, boxes):
@@ -49,7 +49,7 @@ def main():
         for width, suffix in SIZES:
             copy = im.copy()
             copy.thumbnail((width, width), Image.LANCZOS)
-            copy.save(dest / f"{src.stem}{suffix}.webp", "WEBP", quality=78, method=6)
+            copy.save(dest / f"{src.stem}{suffix}.webp", "WEBP", quality=72, method=6)
         count += 1
     print(f"optimized {count} photos into {OUT.relative_to(ROOT)}")
 
