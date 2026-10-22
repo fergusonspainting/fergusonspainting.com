@@ -29,5 +29,5 @@ Pushing to `main` deploys automatically. Other branches get a preview URL.
 
 - Workers & Pages → Create application → Continue with GitHub → this repo. Cloudflare reads `wrangler.jsonc`, so no build settings are needed (deploy command: `npx wrangler deploy`).
 - Worker → Settings → Variables and Secrets: `TURNSTILE_SECRET`, `RESEND_API_KEY` (optional: `QUOTE_TO`, `QUOTE_FROM`)
-- Turnstile site key goes in `public/contact/index.html` (`data-sitekey`). It currently has Cloudflare's always-pass **test** key.
+- Turnstile site key goes in `public/contact/index.html` (`data-sitekey`). Site key: `0x4AAAAAAFgF7yqwi7Slx0f3` (public; widget "Ferguson's quote form").
 - `_headers` and `_redirects` in `public/` work on Workers static assets too.
