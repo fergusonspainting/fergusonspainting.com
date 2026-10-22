@@ -2,3 +2,7 @@
 /quote   /contact/   301
 /book    /contact/   301
 /fb      https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/   302
+/services/painting/   /services/exterior-painting/   301
+/services/painting    /services/exterior-painting/   301
+/services/cleaning/   /services/pressure-washing/    301
+/services/cleaning    /services/pressure-washing/    301

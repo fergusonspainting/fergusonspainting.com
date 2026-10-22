@@ -300,11 +300,12 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .callbar { display: none; }
 @media (max-width: 820px) {
   .callbar {
-    display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: grid; grid-template-columns: 1.2fr 1fr 1.2fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
     box-shadow: 0 -2px 12px rgba(0,0,0,.25);
   }
   .callbar a { min-height: 56px; display: flex; align-items: center; justify-content: center; font: 800 1.2rem/1 var(--display); text-decoration: none; }
   .callbar a:first-child { background: var(--orange); color: var(--black); }
+  .callbar a:nth-child(2) { background: #fff; color: var(--black); border-top: 2px solid var(--black); }
   .callbar a:last-child { background: var(--black); color: #fff; }
   .site-footer { padding-bottom: 7rem; }
 }
