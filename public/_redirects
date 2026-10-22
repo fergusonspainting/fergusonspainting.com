@@ -1,4 +1,4 @@
-# www -> apex is handled by a Cloudflare Redirect Rule, not here.
+# www -> apex is a Cloudflare Redirect Rule ("Redirect from WWW to root"); http -> https is "Always Use HTTPS".
 /quote   /contact/   301
 /book    /contact/   301
 /fb      https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/   302

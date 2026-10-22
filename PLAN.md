@@ -390,7 +390,7 @@ Cloudflare now labels Pages "legacy", so the site runs as a Worker with static a
 - [ ] All pages built and proofread; the phone number is a `tel:+13212027225` link everywhere
 - [x] Form tested end to end Oct 22 (lands in Derwin's inbox, reply-to goes to the customer, Turnstile + honeypot block spam)
 - [ ] Lighthouse mobile ≥ 95; tested on iPhone and Android
-- [ ] Custom domain ✅ live; still to do: www → apex redirect rule and Always Use HTTPS
+- [x] Custom domain live; Always Use HTTPS on; www → apex 301 Redirect Rule (Oct 22)
 - [ ] Search Console and Bing verified; sitemap submitted
 - [ ] **Google Business Profile** updated with the website, new logo, name and email
 - [ ] **Facebook page** updated: website link, new logo as profile picture, cover photo, **email changed to derwin@fergusonspainting.com**, **Book now button pointed at /contact/**, hours fixed (currently "Always open")
