@@ -337,7 +337,7 @@ def header(lang, meta):
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="{pre}/" aria-label="{escape(s["home_label"], quote=True)}">
-      <img src="/assets/img/logo-120.webp" width="60" height="60" alt="">
+      <img src="/assets/img/logo-120.webp" width="60" height="60" alt="Ferguson's Painting &amp; Cleaning logo">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>{s["small"]}</small></span>
     </a>
     <a class="header-phone" href="{TEL}">{ico("phone")}{PHONE}</a>
