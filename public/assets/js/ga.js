@@ -7,7 +7,7 @@ gtag("config", "G-DDY4TM97L3");
 
 (function () {
   var path = location.pathname;
-  var lang = path.indexOf("/es/") === 0 ? "es" : path.indexOf("/pt-br/") === 0 ? "pt" : "en";
+  var lang = path.indexOf("/es/") === 0 ? "es" : path.indexOf("/pt-br/") === 0 ? "pt" : path.indexOf("/zh/") === 0 ? "zh" : "en";
   if (/\/thanks\/$/.test(path)) {
     gtag("event", "generate_lead", { method: "quote_form", language: lang });
   }

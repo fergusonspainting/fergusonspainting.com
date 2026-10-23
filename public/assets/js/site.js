@@ -77,6 +77,15 @@ const MSG = {
     failed: "Sua solicitação não foi enviada. Ligue para (321) 202-7225 ou escreva para derwin@fergusonspainting.com.",
     offline: "Sua solicitação não foi enviada. Verifique sua conexão ou ligue para (321) 202-7225.",
   },
+  zh: {
+    contact: "请留下电话或邮箱，方便我们联系您。",
+    big: (n) => `"${n}" 超过 8 MB，请换一张更小的照片。`,
+    many: "最多可附上 5 张照片，总大小 20 MB。",
+    sending: "正在发送…",
+    send: null,
+    failed: "您的请求未能发送。请致电 (321) 202-7225 或发邮件至 derwin@fergusonspainting.com。",
+    offline: "您的请求未能发送。请检查网络连接，或致电 (321) 202-7225。",
+  },
 };
 const form = document.querySelector("[data-quote-form]");
 if (form) {

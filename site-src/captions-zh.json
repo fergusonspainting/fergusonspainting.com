@@ -1,0 +1,79 @@
+{
+ "_cats": {
+  "painting-exterior": "粉刷",
+  "carpentry": "木工与露台",
+  "repairs": "维修",
+  "remodeling": "改造",
+  "cleaning": "清洁",
+  "commercial": "商业项目"
+ },
+ "_all": "全部作品",
+ "painting-exterior": {
+  "450-burma-encore-reunion-west-front": "Encore at Reunion West 的 450 Burma，外墙由 Ferguson's 粉刷（照片由 450 Burma 提供）",
+  "450-burma-encore-reunion-west-front-night": "黄昏时分的 450 Burma，Encore at Reunion West：外墙由 Ferguson's 粉刷（照片由 450 Burma 提供）",
+  "victorian-blue-repaint": "Celebration 一栋蓝色维多利亚式住宅外墙重新粉刷后",
+  "victorian-pink-repaint-finished": "Celebration 一栋粉色维多利亚式住宅外墙重新粉刷后",
+  "victorian-pink-repaint-in-progress": "粉色维多利亚式住宅外墙重新粉刷中",
+  "gray-home-finished-porch-roof": "灰色两层住宅，门廊金属屋顶刚刚粉刷完成",
+  "gray-home-painting-in-progress": "为一栋带前门廊的灰色两层住宅重新粉刷",
+  "stucco-repaint-two-story-finished": "两层灰泥住宅外墙重新粉刷后",
+  "stucco-repaint-two-story-prep": "两层灰泥住宅粉刷前的准备工作",
+  "stucco-repaint-yellow-prep": "为一栋黄色灰泥住宅换新色做准备",
+  "stucco-repaint-garage": "灰泥住宅及车库重新粉刷后",
+  "stucco-repaint-pool-home-in-progress": "为一栋带泳池的灰泥住宅重新粉刷",
+  "coral-stucco-home-repaint": "珊瑚色灰泥住宅外墙重新粉刷后",
+  "ranch-repaint-dark-garage-door": "单层住宅重新粉刷，车库门为炭灰色",
+  "porch-home-finished": "带门廊的住宅外墙整体重新粉刷后",
+  "porch-home-painting-in-progress": "粉刷环绕式门廊的线条和立柱",
+  "double-porch-columns": "两层门廊，立柱和栏杆刚刚粉刷完成",
+  "carriage-house-pool": "泳池旁的附属小屋外墙重新粉刷后",
+  "mediterranean-estate": "地中海风格宅邸外观",
+  "lanai-repaint": "凉廊重新粉刷",
+  "screened-pool-lanai": "带纱网的泳池凉廊粉刷后",
+  "metal-roof-painting": "粉刷金属屋顶",
+  "spray-painting-garage": "喷涂车库外墙"
+ },
+ "carpentry": {
+  "pool-deck-posts": "泳池露台施工：立柱安装",
+  "pool-deck-framing": "泳池露台施工：搭建框架",
+  "pool-deck-boards": "泳池露台施工：铺设地板",
+  "pool-deck-stairs": "泳池露台施工：楼梯",
+  "pool-deck-finished": "完工的泳池露台，带栏杆",
+  "pool-deck-small-01": "小型泳池露台",
+  "pool-deck-small-02": "带台阶的小型泳池露台",
+  "front-porch-cedar-columns": "前门廊换上新的雪松木立柱",
+  "outdoor-kitchen-cedar-ceiling": "户外厨房，雪松木板吊顶",
+  "porch-steps-railing-repair": "重建的门廊台阶和栏杆",
+  "interior-door-install": "室内门安装"
+ },
+ "repairs": {
+  "wood-rot-sill-plate-before": "在外墙板后发现腐烂的底梁板",
+  "wood-rot-sheathing-removal": "拆除腐烂的墙体衬板",
+  "siding-repair-house-wrap": "安装外墙板前的新衬板和防水透气膜",
+  "siding-repair-in-progress": "安装新外墙板",
+  "siding-repair-finished-gray": "外墙板修复并粉刷成与原色一致",
+  "gray-home-before-trim-repair": "门廊屋顶上方受损的线条，修复前",
+  "soffit-trim-repair-painting": "檐底板和线条修复，已涂底漆并粉刷"
+ },
+ "remodeling": {
+  "staircase-before": "楼梯改造前",
+  "staircase-after": "楼梯换上新踏板、立板粉刷后",
+  "stone-tile-shower-in-progress": "仿石瓷砖淋浴间施工中",
+  "bathroom-remodel-in-progress": "浴室改造进行中",
+  "vinyl-plank-flooring-install": "乙烯基板材地板安装"
+ },
+ "cleaning": {
+  "pressure-washing-vine-removal": "住宅外墙高压清洗与藤蔓清除"
+ },
+ "commercial": {
+  "retail-store-interior-prep": "零售店内部已做遮蔽，准备营业时间外粉刷",
+  "retail-store-interior-finished": "零售店内部粉刷后",
+  "clubhouse-interior": "社区会所内部",
+  "pool-store-deck-build": "为一家泳池与水疗用品店搭建展示露台"
+ },
+ "team": {
+  "derwin-on-the-job-01": "Derwin Ferguson 在工作现场",
+  "derwin-tile-shower-02": "Derwin Ferguson 正在淋浴间铺贴瓷砖",
+  "crew-interior-prep-masks": "团队为室内粉刷做准备"
+ }
+}

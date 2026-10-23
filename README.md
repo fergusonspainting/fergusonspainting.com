@@ -9,13 +9,13 @@ See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checkl
 | Path | What it is |
 |---|---|
 | `site-src/bodies/` | **English page content** (one file per page). Line 1 is JSON metadata (path, title, description); the rest is the page body. |
-| `site-src/bodies-es/`, `site-src/bodies-pt/` | Spanish and Brazilian Portuguese versions, using the same filenames and `path`. The Spanish and Portuguese home pages (`00-home.html`) are custom landing pages, not translations. |
+| `site-src/bodies-es/`, `site-src/bodies-pt/`, `site-src/bodies-zh/` | Spanish, Brazilian Portuguese and Simplified Chinese versions, using the same filenames and `path`. The Spanish and Portuguese home pages (`00-home.html`) are custom landing pages, not translations; the Chinese one is a translation. |
 | `site-src/captions-*.json` | Photo captions (alt text) and gallery category names per language. |
 | `tools/build.py` | Builds `public/` from `site-src/`: wraps each body in the shared header, footer and phone bar, adds hreflang tags, structured data and the language switcher, and writes `sitemap.xml`. |
-| `public/` | The built website, served as-is by the Worker. `/es/...` is Spanish, `/pt-br/...` is Portuguese. **Don't hand-edit the generated HTML;** edit `site-src/` and rebuild. |
+| `public/` | The built website, served as-is by the Worker. `/es/...` is Spanish, `/pt-br/...` is Portuguese, `/zh/...` is Chinese. **Don't hand-edit the generated HTML;** edit `site-src/` and rebuild. |
 | `public/assets/` | CSS, JS, images (hand-edited). |
 | `wrangler.jsonc` | Worker config: serves `public/`, runs `src/worker.js` only for `/api/*`. |
-| `src/worker.js`, `src/quote.js` | Quote form: Turnstile check, then an email to derwin@ via Resend. Error messages come back in the visitor's language, and the email is tagged [ES]/[PT]. |
+| `src/worker.js`, `src/quote.js` | Quote form: Turnstile check, then an email to derwin@ via Resend. Error messages come back in the visitor's language, and the email is tagged [ES]/[PT]/[ZH]. |
 | `images/` | Logo files. Original gallery photos live in `images/gallery/` locally only (git-ignored because they are unblurred). |
 | `tools/optimize-images.py` | Turns `images/gallery/**.jpg` into web `.webp` files, blurring house numbers and other businesses' names. |
 

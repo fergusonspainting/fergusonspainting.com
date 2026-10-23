@@ -1,14 +1,15 @@
-"""Build the site: turns site-src/ page bodies into public/**/index.html in English, Spanish and Portuguese.
+"""Build the site: turns site-src/ page bodies into public/**/index.html in English, Spanish, Portuguese and Simplified Chinese.
 
 Usage (from anywhere):  python tools/build.py
   site-src/bodies/      English page bodies (source of truth)
   site-src/bodies-es/   Spanish bodies (same filenames, same "path")
   site-src/bodies-pt/   Brazilian Portuguese bodies
-  site-src/captions-en.json, captions-es.json, captions-pt.json   photo captions and gallery category names
+  site-src/bodies-zh/   Simplified Chinese bodies
+  site-src/captions-en.json, captions-es.json, captions-pt.json, captions-zh.json   photo captions and gallery category names
 
 Each body starts with a JSON line: {"path": "about/", "title": ..., "desc": ..., "nav": ..., "crumb": ..., "service": ...}
 Shortcodes: [[img cat/name "alt" eager|wide]], [[gallery]], [[process]]
-Spanish pages are written under /es/, Portuguese under /pt-br/. Internal links in translated bodies are
+Spanish pages are written under /es/, Portuguese under /pt-br/, Chinese under /zh/. Internal links in translated bodies are
 rewritten to the same language when that page exists, otherwise they fall back to English.
 """
 import json
@@ -124,14 +125,41 @@ L = {
         biz_desc="Empresa de pintura, carpintaria, reparos, reformas e lavagem com alta pressão, comandada pelo dono, atendendo Orlando e a Flórida Central desde 2012.",
         form_note="Nossa equipe responde em inglês. Pode escrever sua mensagem em português, e nós traduzimos.",
     ),
+    "zh": dict(
+        prefix="/zh", html="zh-CN", og="zh_CN", name="中文", short="中文",
+        skip="跳到正文", small="奥兰多及佛罗里达中部", menu="菜单",
+        nav=["服务项目", "我们的作品", "客户评价", "关于我们", "联系我们"], free_quote="免费报价",
+        cta_h="准备好给家焕然一新了吗？", cta_p="告诉我们您的需求，我们为您安排免费估价。",
+        call=f"致电 {PHONE}", text_us="发短信", email="给 Derwin 发邮件", request="申请报价",
+        tagline="始终专业、整洁、干净的服务。", logo_alt="Ferguson's Painting &amp; Cleaning, Inc. 标志",
+        contact_h="联系方式", hours="周一至周六 24 小时营业，周日休息。",
+        fb="在 Facebook 上关注我们", review="在 Google 上留下评价",
+        reply="我们的团队用英文回复，您可以用中文给我们留言。",
+        services_h="服务项目", services=["外墙粉刷", "室内粉刷", "爆米花天花板拆除", "灰泥（stucco）修补",
+                                         "杂工与维修", "泳池露台与木工", "翻新改造", "高压清洗",
+                                         "度假出租屋粉刷", "商业及 HOA/POA"],
+        areas_h="服务区域", all_areas="全部服务区域", guides="房主指南",
+        legal="© 2026 Ferguson's Painting &amp; Cleaning, Inc. 自 2012 年起服务佛罗里达中部。已投保全额保险。",
+        bar=["致电", "短信", "邮件", "报价"],
+        crumbs={"home": "首页", "services": "服务项目", "areas": "服务区域", "guides": "指南"},
+        process_h="施工流程",
+        process=[("免费估价", '<a href="/about/">Derwin</a> 上门查看，给您一份清晰的书面报价。'),
+                 ("安排时间", "按您方便的日期开工，并随时告知进度。"),
+                 ("保护与准备", "开工前先盖好地板、植物和家具。"),
+                 ("施工", "先修补，再做面层，一次做到位。"),
+                 ("验收与清理", "和您一起检查成果，现场打扫干净。")],
+        filter_label="筛选照片", all_work="全部作品", lang_label="语言", related_h="Ferguson's 更多内容", related=[("about/", "关于 Derwin"), ("services/", "全部服务"), ("areas/", "服务区域"), ("guides/", "房主指南"), ("reviews/", "客户评价"), ("gallery/", "我们的作品")], byline="来自奥兰多 Ferguson's Painting &amp; Cleaning 团队。更新于 2026 年 10 月。", main_nav="主导航", search="搜索", close="关闭", home_label="Ferguson's Painting & Cleaning 首页",
+        biz_desc="由业主亲自经营的粉刷、木工、房屋维修、翻新和高压清洗公司，自 2012 年起服务奥兰多及佛罗里达中部。",
+        form_note="我们的团队用英文回复。您可以用中文填写留言，我们会翻译。",
+    ),
 }
 NAV_KEYS = [("services", "/services/"), ("gallery", "/gallery/"), ("reviews", "/reviews/"), ("about", "/about/"), ("contact", "/contact/")]
-BODY_DIRS = {"en": GEN / "bodies", "es": GEN / "bodies-es", "pt": GEN / "bodies-pt"}
+BODY_DIRS = {"en": GEN / "bodies", "es": GEN / "bodies-es", "pt": GEN / "bodies-pt", "zh": GEN / "bodies-zh"}
 
 # ---------- captions ----------
 CAPTIONS = {"en": CAPTIONS_EN}
 CATS = {"en": dict(CAT_NAMES)}
-for lang in ("es", "pt"):
+for lang in ("es", "pt", "zh"):
     f = GEN / f"captions-{lang}.json"
     data = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
     CAPTIONS[lang] = {c: {**CAPTIONS_EN[c], **data.get(c, {})} for c in CAPTIONS_EN}

@@ -7,6 +7,7 @@ Allow: /
 Disallow: /thanks/
 Disallow: /es/thanks/
 Disallow: /pt-br/thanks/
+Disallow: /zh/thanks/
 Disallow: /api/
 
 # AI search and assistant crawlers (explicitly allowed)
@@ -35,6 +36,7 @@ Allow: /
 Disallow: /thanks/
 Disallow: /es/thanks/
 Disallow: /pt-br/thanks/
+Disallow: /zh/thanks/
 Disallow: /api/
 
 Sitemap: https://fergusonspainting.com/sitemap.xml
