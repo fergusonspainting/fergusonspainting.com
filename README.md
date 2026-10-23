@@ -29,7 +29,7 @@ See [PLAN.md](PLAN.md) for the full build plan, business facts and launch checkl
 - **Header, footer, phone bar, "How a job goes" and the language strings** all live in `tools/build.py` (the `L` dictionary).
 - **New page:** add a body file in all three folders with the same `path`. A page missing from a language falls back to English links automatically.
 - **New photos:** add the `.jpg` to `images/gallery/<category>/`, run `python tools/optimize-images.py`, then add captions to the three `captions-*.json` files.
-- Shortcodes in bodies: `[[img category/name "alt text" wide]]`, `[[gallery]]`, `[[process]]`.
+- Shortcodes in bodies: `[[img category/name "alt text" wide]]`, `[[gallery]]`, `[[process]]`, `[[ico name]]` (inline icon; names in `ICON` in tools/build.py: phone, sms, mail, clock, pin, quote, star, facebook, google, camera).
 
 ## Cloudflare Worker settings
 
