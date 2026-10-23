@@ -70,6 +70,10 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .ico { width: 1em; height: 1em; flex: none; vertical-align: -.15em; margin-right: .45em; fill: currentColor; }
 .btn .ico { margin-right: 0; }
 .callbar a .ico { margin-right: .35em; width: 1.1em; height: 1.1em; }
+@media (max-width: 480px) {
+  .callbar a { flex-direction: column; gap: .15rem; font-size: 1rem; }
+  .callbar a .ico { margin: 0; width: 1.3em; height: 1.3em; }
+}
 .contact-card dt .ico { color: var(--orange); }
 
 .btn {
