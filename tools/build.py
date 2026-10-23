@@ -52,6 +52,7 @@ L = {
         call=f"Call {PHONE}", text_us="Text us", email="Email Derwin", request="Request a quote",
         tagline="Always a professional, neat and clean service.", logo_alt="Ferguson's Painting &amp; Cleaning, Inc. logo",
         contact_h="Contact", hours="Open 24 hours, Monday–Saturday. Closed Sunday.", reply=None,
+        fb="Follow us on Facebook", review="Leave a Google review",
         services_h="Services", services=["Exterior painting", "Interior painting", "Popcorn ceiling removal", "Stucco repair",
                                          "Handyman &amp; repairs", "Pool decks &amp; carpentry", "Remodeling", "Pressure washing",
                                          "Vacation rental painting", "Commercial &amp; HOA/POA"],
@@ -77,6 +78,7 @@ L = {
         call=f"Llamar al {PHONE}", text_us="Envíenos un texto", email="Escríbale a Derwin", request="Pedir cotización",
         tagline="Siempre un servicio profesional, ordenado y limpio.", logo_alt="Logo de Ferguson's Painting &amp; Cleaning, Inc.",
         contact_h="Contacto", hours="Las 24 horas, lunes a sábado. Cerrado los domingos.",
+        fb="Síganos en Facebook", review="Déjenos una reseña en Google",
         reply="Nuestro equipo responde en inglés. Puede escribirnos en español.",
         services_h="Servicios", services=["Pintura exterior", "Pintura interior", "Remoción de techos de popcorn", "Reparación de estuco",
                                           "Handyman y reparaciones", "Decks de piscina y carpintería", "Remodelación", "Lavado a presión",
@@ -103,6 +105,7 @@ L = {
         call=f"Ligar {PHONE}", text_us="Enviar mensagem", email="E-mail para o Derwin", request="Pedir orçamento",
         tagline="Sempre um serviço profissional, organizado e limpo.", logo_alt="Logo da Ferguson's Painting &amp; Cleaning, Inc.",
         contact_h="Contato", hours="24 horas, segunda a sábado. Fechado aos domingos.",
+        fb="Siga a gente no Facebook", review="Deixe uma avaliação no Google",
         reply="Nossa equipe responde em inglês. Você pode escrever em português.",
         services_h="Serviços", services=["Pintura externa", "Pintura interna", "Remoção de teto popcorn", "Reparo de stucco",
                                          "Faz-tudo e reparos", "Decks de piscina e carpintaria", "Reforma", "Lavagem com alta pressão",
@@ -353,7 +356,8 @@ def footer(lang):
         <li><a href="{TEL}">{PHONE}</a></li>
         <li><a href="mailto:derwin@fergusonspainting.com">derwin@fergusonspainting.com</a></li>
         <li>{s["hours"]}</li>{reply}
-        <li><a href="https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/" rel="noopener">{s["fb"]}</a></li>
+        <li><a href="https://g.page/r/CX8fUKnLzEVMEBM/review" rel="noopener">{s["review"]}</a></li>
       </ul>
     </div>
     <div>
