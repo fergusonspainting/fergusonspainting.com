@@ -198,11 +198,32 @@ def process(lang):
 </section>"""
 
 
+
+# ---------- inline icons (24x24, currentColor) ----------
+ICON = {
+    "phone": "M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z",
+    "sms": "M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 9h10v2H7zm0-3h10v2H7z",
+    "mail": "M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z",
+    "clock": "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7z",
+    "pin": "M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z",
+    "quote": "M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14-4-4 1.4-1.4L10 14.2l6.6-6.6L18 9z",
+    "star": "M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z",
+    "facebook": "M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z",
+    "google": "M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4zM12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22zM6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9zM12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6 12 6z",
+    "camera": "M9 3 7.2 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3zm3 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z",
+}
+
+
+def ico(name):
+    return f'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="{ICON[name]}"/></svg>'
+
+
 def expand(body, lang):
     # Images inside photo grids are small thumbnails: give them the "thumb" sizes hint
     body = re.sub(r'<div class="grid-photos">.*?</div>\n',
                   lambda m: re.sub(r'\[\[img (\S+)( "[^"]*")?\]\]', r'[[img \1\2 thumb]]', m[0]), body, flags=re.S)
     body = body.replace("[[gallery]]", gallery(lang)).replace("[[process]]", process(lang))
+    body = re.sub(r"\[\[ico (\w+)\]\]", lambda m: ico(m[1]), body)
     return re.sub(r'\[\[img (\S+)(?: "([^"]*)")?(?: (eager|wide|thumb))?\]\]', lambda m: img(m[1], lang, m[2], m[3] or ""), body)
 
 
@@ -304,7 +325,7 @@ def header(lang, meta):
       <img src="/assets/img/logo-120.webp" width="60" height="60" alt="">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>{s["small"]}</small></span>
     </a>
-    <a class="header-phone" href="{TEL}">{PHONE}</a>
+    <a class="header-phone" href="{TEL}">{ico("phone")}{PHONE}</a>
     <nav class="langs" aria-label="{s["lang_label"]}">{langs}</nav>
     <button class="search-toggle" type="button" aria-haspopup="dialog" aria-label="{s["search"]}" title="{s["search"]}" data-search-open>
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
@@ -336,10 +357,10 @@ def footer(lang):
       <p>{s["cta_p"]}</p>
     </div>
     <div class="btn-row">
-      <a class="btn btn--black" href="{TEL}">{s["call"]}</a>
-      <a class="btn btn--black" href="{SMS}">{s["text_us"]}</a>
-      <a class="btn btn--black" href="{MAIL}">{s["email"]}</a>
-      <a class="btn btn--black" href="{lang_url(lang, "contact/")}">{s["request"]}</a>
+      <a class="btn btn--black" href="{TEL}">{ico("phone")}{s["call"]}</a>
+      <a class="btn btn--black" href="{SMS}">{ico("sms")}{s["text_us"]}</a>
+      <a class="btn btn--black" href="{MAIL}">{ico("mail")}{s["email"]}</a>
+      <a class="btn btn--black" href="{lang_url(lang, "contact/")}">{ico("quote")}{s["request"]}</a>
     </div>
   </div>
 </section>
@@ -353,11 +374,11 @@ def footer(lang):
     <div>
       <h2>{s["contact_h"]}</h2>
       <ul>
-        <li><a href="{TEL}">{PHONE}</a></li>
-        <li><a href="mailto:derwin@fergusonspainting.com">derwin@fergusonspainting.com</a></li>
-        <li>{s["hours"]}</li>{reply}
-        <li><a href="https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/" rel="noopener">{s["fb"]}</a></li>
-        <li><a href="https://g.page/r/CX8fUKnLzEVMEBM/review" rel="noopener">{s["review"]}</a></li>
+        <li><a href="{TEL}">{ico("phone")}{PHONE}</a></li>
+        <li><a href="mailto:derwin@fergusonspainting.com">{ico("mail")}derwin@fergusonspainting.com</a></li>
+        <li>{ico("clock")}{s["hours"]}</li>{reply}
+        <li><a href="https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/" rel="noopener">{ico("facebook")}{s["fb"]}</a></li>
+        <li><a href="https://g.page/r/CX8fUKnLzEVMEBM/review" rel="noopener">{ico("google")}{s["review"]}</a></li>
       </ul>
     </div>
     <div>
@@ -378,10 +399,10 @@ def footer(lang):
   </div>
 </footer>
 <div class="callbar">
-  <a href="{TEL}">{s["bar"][0]}</a>
-  <a href="{SMS}">{s["bar"][1]}</a>
-  <a href="{MAIL}">{s["bar"][2]}</a>
-  <a href="{lang_url(lang, "contact/")}">{s["bar"][3]}</a>
+  <a href="{TEL}">{ico("phone")}{s["bar"][0]}</a>
+  <a href="{SMS}">{ico("sms")}{s["bar"][1]}</a>
+  <a href="{MAIL}">{ico("mail")}{s["bar"][2]}</a>
+  <a href="{lang_url(lang, "contact/")}">{ico("quote")}{s["bar"][3]}</a>
 </div>
 </body>
 </html>

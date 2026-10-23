@@ -67,6 +67,11 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .sparkle span { font-size: 1.1rem; line-height: 1; }
 
 /* Buttons */
+.ico { width: 1em; height: 1em; flex: none; vertical-align: -.15em; margin-right: .45em; fill: currentColor; }
+.btn .ico { margin-right: 0; }
+.callbar a .ico { margin-right: .35em; width: 1.1em; height: 1.1em; }
+.contact-card dt .ico { color: var(--orange); }
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
   min-height: 48px; padding: .7rem 1.4rem;
