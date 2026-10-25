@@ -30,7 +30,7 @@ html[lang="zh-CN"] {
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 6rem; scroll-padding-bottom: 5rem; }  /* keep focused fields clear of the sticky header and call bar */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 10rem; scroll-padding-bottom: 5rem; }  /* keep focused fields clear of the sticky header and call bar */
 body {
   margin: 0;
   background: var(--paper);
@@ -72,13 +72,18 @@ p { margin: 0 0 1em; max-width: 68ch; }
 
 /* Buttons */
 .ico { width: 1em; height: 1em; flex: none; vertical-align: -.15em; margin-right: .45em; fill: currentColor; }
+.ico-wa { color: #128C7E; }
+.hero__text .ico-wa, .section--black .ico-wa, .btn--black .ico-wa, .site-footer .ico-wa, .cta-band .ico-wa, .banner .ico-wa { color: #25D366; }
+.callbar__wa .ico-wa { color: #fff; }
+a[href^="https://wa.me/"] { white-space: nowrap; }
 .btn .ico { margin-right: 0; }
 .callbar a .ico { margin-right: .35em; width: 1.1em; height: 1.1em; }
 @media (max-width: 480px) {
-  .callbar a { flex-direction: column; gap: .15rem; font-size: 1rem; }
-  .callbar a .ico { margin: 0; width: 1.3em; height: 1.3em; }
+  .callbar a { gap: .15rem; font-size: .68rem; line-height: 1; }
+  .callbar a .ico { margin: 0; width: 1.05em; height: 1.05em; }
 }
 .contact-card dt .ico { color: var(--orange); }
+.contact-card dt .ico-wa { color: #25D366; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
@@ -97,9 +102,9 @@ p { margin: 0 0 1em; max-width: 68ch; }
 
 /* Header */
 .site-header { background: var(--black); color: #fff; position: sticky; top: 0; z-index: 50; }
-.site-header .wrap { display: flex; align-items: center; gap: 1rem; min-height: 76px; }
+.site-header .wrap { display: flex; align-items: center; gap: 1rem; min-height: 136px; }
 .brand { display: flex; align-items: center; gap: .75rem; color: #fff; text-decoration: none; margin-right: auto; }
-.brand img { width: 60px; height: 60px; }
+.brand img { width: 120px; height: 120px; max-width: none; }
 .brand strong { font: 800 1.35rem/1 var(--display); display: block; }
 .brand small { font: 400 .9rem/1.2 var(--body); color: #bdbdbd; }
 .nav { display: flex; gap: 1.5rem; align-items: center; }
@@ -321,7 +326,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .site-footer a { color: #fff; text-decoration: none; }
 .site-footer a:hover { color: var(--orange); }
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
-.site-footer img { width: 120px; margin-bottom: 1rem; }
+.site-footer img { width: 160px; height: auto; margin-bottom: 1rem; }
 .site-footer .legal { max-width: none; margin: 0; grid-column: 1 / -1; border-top: 1px solid #2b2b2b; padding-top: 1.25rem; font-size: .9rem; }
 @media (max-width: 820px) { .site-footer .wrap { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .site-footer .wrap { grid-template-columns: 1fr; } }
@@ -330,14 +335,21 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .callbar { display: none; }
 @media (max-width: 820px) {
   .callbar {
-    display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
     box-shadow: 0 -2px 12px rgba(0,0,0,.25);
   }
-  .callbar a { min-height: 56px; display: flex; align-items: center; justify-content: center; font: 800 1.2rem/1 var(--display); text-decoration: none; }
-  .callbar a:first-child { background: var(--orange); color: var(--black); }
-  .callbar a:nth-child(2) { background: var(--orange); color: var(--black); border-left: 2px solid var(--black); }
-  .callbar a:nth-child(3) { background: #fff; color: var(--black); border-top: 2px solid var(--black); }
-  .callbar a:last-child { background: var(--black); color: #fff; }
+  .callbar a {
+    min-height: 56px; display: flex; align-items: center; justify-content: center; text-align: center;
+    font: 800 .95rem/1.05 var(--display); letter-spacing: 0; text-decoration: none; padding: .35rem .15rem;
+  }
+  .callbar a:hover { color: inherit; }
+  .callbar__call, .callbar__sms { background: var(--orange); color: var(--black); }
+  .callbar__sms, .callbar__wa, .callbar__mail { border-left: 2px solid var(--black); }
+  .callbar__wa { background: #075E54; color: #fff; }
+  .callbar__wa:hover { color: #fff; background: #064e46; }
+  .callbar__mail { background: #fff; color: var(--black); }
+  .callbar__quote { background: var(--black); color: #fff; }
+  .callbar__quote:hover { color: #fff; }
   .site-footer { padding-bottom: 7rem; }
 }
 
@@ -389,16 +401,16 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .site-header .wrap { max-width: 92rem; }
 html:not([lang="en"]) .brand small { display: none; }
 @media (min-width: 1181px) { html:not([lang="en"]) .nav { gap: 1.1rem; } }
-@media (min-width: 1181px) and (max-width: 1360px) { .brand span { display: none; } .nav { gap: 1.1rem; } }
-@media (min-width: 1361px) and (max-width: 1440px) { html:not([lang="en"]) .brand span { display: none; } }
+@media (min-width: 1181px) and (max-width: 1500px) { .brand span { display: none; } .nav { gap: 1.1rem; } }
+@media (min-width: 1501px) and (max-width: 1620px) { html:not([lang="en"]) .brand span { display: none; } }
 @media (max-width: 960px) {
   .brand strong { white-space: normal; font-size: 1.1rem; }
   .site-header .wrap { gap: .5rem; }
   .search-toggle { min-width: 40px; padding: .4rem; }
 }
-@media (max-width: 520px) {
+@media (max-width: 720px) {
   .brand span { display: none; }   /* the round logo already reads "Ferguson's Painting & Cleaning" */
-  .brand img { width: 52px; height: 52px; }
+  .brand img { width: 96px; height: 96px; }
   .brand { margin-right: auto; }
   .langs { margin-left: 0; }
 }

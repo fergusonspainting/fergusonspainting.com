@@ -17,6 +17,7 @@ import re
 import sys
 from html import escape
 from pathlib import Path
+from urllib.parse import quote
 
 from PIL import Image
 
@@ -25,7 +26,7 @@ GEN = ROOT / "site-src"
 PUB = ROOT / "public"
 IMG = PUB / "assets" / "img" / "gallery"
 SITE = "https://fergusonspainting.com"
-TODAY = "2026-10-22"
+TODAY = "2026-10-25"
 
 _en = json.loads((GEN / "captions-en.json").read_text(encoding="utf-8"))
 CAT_NAMES = _en.pop("_cats")
@@ -36,6 +37,7 @@ PHONE = "(321) 202-7225"
 TEL = "tel:+13212027225"
 SMS = "sms:+13212027225"
 MAIL = "mailto:derwin@fergusonspainting.com?subject=Quote%20request"
+WA_NUMBER = "13212027225"
 
 AREA_LINKS = [("/areas/", "Orlando"), ("/areas/kissimmee/", "Kissimmee"), ("/areas/celebration/", "Celebration"),
               ("/areas/reunion/", "Reunion"), ("/areas/championsgate/", "ChampionsGate"),
@@ -50,7 +52,8 @@ L = {
         skip="Skip to content", small="Orlando &amp; Central Florida", menu="Menu",
         nav=["Services", "Our work", "Reviews", "About", "Contact"], free_quote="Free quote",
         cta_h="Ready for a fresh coat?", cta_p="Tell us about the job and we'll set up a free estimate.",
-        call=f"Call {PHONE}", text_us="Text us", email="Email Derwin", request="Request a quote",
+        call=f"Call {PHONE}", text_us="Text us", whatsapp="WhatsApp", email="Email Derwin", request="Request a quote",
+        wa_draft="Hi, I need a quote from Ferguson's Painting.",
         tagline="Always a professional, neat and clean service.", logo_alt="Ferguson's Painting &amp; Cleaning, Inc. logo",
         contact_h="Contact", hours="Open 24 hours, Monday–Saturday. Closed Sunday.", reply=None,
         fb="Follow us on Facebook", review="Leave a Google review",
@@ -59,7 +62,7 @@ L = {
                                          "Vacation rental painting", "Commercial &amp; HOA/POA"],
         areas_h="Service area", all_areas="All service areas", guides="Homeowner guides",
         legal="© 2026 Ferguson's Painting &amp; Cleaning, Inc. Serving Central Florida since 2012. Fully insured.",
-        bar=["Call", "Text", "Email", "Quote"],
+        bar=["Call", "Text", "WhatsApp", "Email", "Quote"],
         crumbs={"home": "Home", "services": "Services", "areas": "Service areas", "guides": "Guides"},
         process_h="How a job goes",
         process=[("Free estimate", '<a href="/about/">Derwin</a> comes out, looks at the job and gives you a clear written price.'),
@@ -76,7 +79,8 @@ L = {
         skip="Saltar al contenido", small="Orlando y Florida Central", menu="Menú",
         nav=["Servicios", "Nuestro trabajo", "Reseñas", "Nosotros", "Contacto"], free_quote="Cotización gratis",
         cta_h="¿Listo para una nueva capa de pintura?", cta_p="Cuéntenos sobre el trabajo y coordinamos un estimado gratis.",
-        call=f"Llamar al {PHONE}", text_us="Envíenos un texto", email="Escríbale a Derwin", request="Pedir cotización",
+        call=f"Llamar al {PHONE}", text_us="Envíenos un texto", whatsapp="WhatsApp", email="Escríbale a Derwin", request="Pedir cotización",
+        wa_draft="Hola, necesito una cotización de Ferguson's Painting.",
         tagline="Siempre un servicio profesional, ordenado y limpio.", logo_alt="Logo de Ferguson's Painting &amp; Cleaning, Inc.",
         contact_h="Contacto", hours="Las 24 horas, lunes a sábado. Cerrado los domingos.",
         fb="Síganos en Facebook", review="Déjenos una reseña en Google",
@@ -86,7 +90,7 @@ L = {
                                           "Pintura de casas vacacionales", "Comercial y HOA/POA"],
         areas_h="Área de servicio", all_areas="Todas las áreas de servicio", guides="Guías para propietarios",
         legal="© 2026 Ferguson's Painting &amp; Cleaning, Inc. Al servicio de Florida Central desde 2012. Totalmente asegurados.",
-        bar=["Llamar", "Texto", "Email", "Cotizar"],
+        bar=["Llamar", "Texto", "WhatsApp", "Email", "Cotizar"],
         crumbs={"home": "Inicio", "services": "Servicios", "areas": "Áreas de servicio", "guides": "Guías"},
         process_h="Cómo funciona un trabajo",
         process=[("Estimado gratis", '<a href="/about/">Derwin</a> va, revisa el trabajo y le da un precio claro por escrito.'),
@@ -103,7 +107,8 @@ L = {
         skip="Pular para o conteúdo", small="Orlando e Flórida Central", menu="Menu",
         nav=["Serviços", "Nossos trabalhos", "Avaliações", "Sobre nós", "Contato"], free_quote="Orçamento grátis",
         cta_h="Pronto para uma pintura nova?", cta_p="Conte sobre o serviço e marcamos um orçamento grátis.",
-        call=f"Ligar {PHONE}", text_us="Enviar mensagem", email="E-mail para o Derwin", request="Pedir orçamento",
+        call=f"Ligar {PHONE}", text_us="Enviar mensagem", whatsapp="WhatsApp", email="E-mail para o Derwin", request="Pedir orçamento",
+        wa_draft="Olá, preciso de um orçamento da Ferguson's Painting.",
         tagline="Sempre um serviço profissional, organizado e limpo.", logo_alt="Logo da Ferguson's Painting &amp; Cleaning, Inc.",
         contact_h="Contato", hours="24 horas, segunda a sábado. Fechado aos domingos.",
         fb="Siga a gente no Facebook", review="Deixe uma avaliação no Google",
@@ -113,7 +118,7 @@ L = {
                                          "Pintura de casas de temporada", "Comercial e HOA/POA"],
         areas_h="Área de atendimento", all_areas="Todas as áreas atendidas", guides="Guias para proprietários",
         legal="© 2026 Ferguson's Painting &amp; Cleaning, Inc. Atendendo a Flórida Central desde 2012. Com seguro completo.",
-        bar=["Ligar", "Mensagem", "E-mail", "Orçamento"],
+        bar=["Ligar", "Mensagem", "WhatsApp", "E-mail", "Orçamento"],
         crumbs={"home": "Início", "services": "Serviços", "areas": "Áreas atendidas", "guides": "Guias"},
         process_h="Como funciona o serviço",
         process=[("Orçamento grátis", '<a href="/about/">O Derwin</a> vai até você, avalia o serviço e entrega um preço claro por escrito.'),
@@ -130,7 +135,8 @@ L = {
         skip="跳到正文", small="奥兰多及佛罗里达中部", menu="菜单",
         nav=["服务项目", "我们的作品", "客户评价", "关于我们", "联系我们"], free_quote="免费报价",
         cta_h="准备好给家焕然一新了吗？", cta_p="告诉我们您的需求，我们为您安排免费估价。",
-        call=f"致电 {PHONE}", text_us="发短信", email="给 Derwin 发邮件", request="申请报价",
+        call=f"致电 {PHONE}", text_us="发短信", whatsapp="WhatsApp", email="给 Derwin 发邮件", request="申请报价",
+        wa_draft="您好，我想请 Ferguson's Painting 报价。",
         tagline="始终专业、整洁、干净的服务。", logo_alt="Ferguson's Painting &amp; Cleaning, Inc. 标志",
         contact_h="联系方式", hours="周一至周六 24 小时营业，周日休息。",
         fb="在 Facebook 上关注我们", review="在 Google 上留下评价",
@@ -140,7 +146,7 @@ L = {
                                          "度假出租屋粉刷", "商业及 HOA/POA"],
         areas_h="服务区域", all_areas="全部服务区域", guides="房主指南",
         legal="© 2026 Ferguson's Painting &amp; Cleaning, Inc. 自 2012 年起服务佛罗里达中部。已投保全额保险。",
-        bar=["致电", "短信", "邮件", "报价"],
+        bar=["致电", "短信", "WhatsApp", "邮件", "报价"],
         crumbs={"home": "首页", "services": "服务项目", "areas": "服务区域", "guides": "指南"},
         process_h="施工流程",
         process=[("免费估价", '<a href="/about/">Derwin</a> 上门查看，给您一份清晰的书面报价。'),
@@ -153,6 +159,11 @@ L = {
         form_note="我们的团队用英文回复。您可以用中文填写留言，我们会翻译。",
     ),
 }
+def wa(lang):
+    """Click-to-chat link for Derwin's WhatsApp, with a short draft in the page language."""
+    return f"https://wa.me/{WA_NUMBER}?text={quote(L[lang]['wa_draft'])}"
+
+
 NAV_KEYS = [("services", "/services/"), ("gallery", "/gallery/"), ("reviews", "/reviews/"), ("about", "/about/"), ("contact", "/contact/")]
 BODY_DIRS = {"en": GEN / "bodies", "es": GEN / "bodies-es", "pt": GEN / "bodies-pt", "zh": GEN / "bodies-zh"}
 
@@ -230,6 +241,7 @@ def process(lang):
 # ---------- inline icons (24x24, currentColor) ----------
 ICON = {
     "phone": "M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z",
+    "whatsapp": "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z",
     "sms": "M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 9h10v2H7zm0-3h10v2H7z",
     "mail": "M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z",
     "clock": "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7z",
@@ -258,7 +270,19 @@ ICON = {
 
 
 def ico(name):
-    return f'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="{ICON[name]}"/></svg>'
+    cls = "ico ico-wa" if name == "whatsapp" else "ico"
+    rule = ' fill-rule="evenodd"' if name == "whatsapp" else ""
+    return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path{rule} d="{ICON[name]}"/></svg>'
+
+
+def inject_wa_icon(html):
+    """Put the WhatsApp mark inside any chat link whose label is the word WhatsApp."""
+    def fix(m):
+        inner = m.group(2)
+        if "<svg" in inner or "WhatsApp" not in inner:
+            return m.group(0)
+        return m.group(1) + ico("whatsapp") + inner + m.group(3)
+    return re.sub(r'(<a\b[^>]*href="https://wa\.me/[^"]*"[^>]*>)(.*?)(</a>)', fix, html, flags=re.S)
 
 
 def expand(body, lang):
@@ -266,7 +290,9 @@ def expand(body, lang):
     body = re.sub(r'<div class="grid-photos">.*?</div>\n',
                   lambda m: re.sub(r'\[\[img (\S+)( "[^"]*")?\]\]', r'[[img \1\2 thumb]]', m[0]), body, flags=re.S)
     body = body.replace("[[gallery]]", gallery(lang)).replace("[[process]]", process(lang))
+    body = body.replace("[[wa]]", wa(lang))
     body = re.sub(r"\[\[ico (\w+)\]\]", lambda m: ico(m[1]), body)
+    body = inject_wa_icon(body)
     return re.sub(r'\[\[img (\S+)(?: "([^"]*)")?(?: (eager|wide|thumb))?\]\]', lambda m: img(m[1], lang, m[2], m[3] or ""), body)
 
 
@@ -365,7 +391,7 @@ def header(lang, meta):
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="{pre}/" aria-label="{escape(s["home_label"], quote=True)}">
-      <img src="/assets/img/logo-120.webp" width="60" height="60" alt="Ferguson's Painting &amp; Cleaning logo">
+      <img src="/assets/img/logo-512.webp" width="120" height="120" alt="Ferguson's Painting &amp; Cleaning logo">
       <span><strong>Ferguson's Painting &amp; Cleaning</strong><small>{s["small"]}</small></span>
     </a>
     <a class="header-phone" href="{TEL}">{ico("phone")}{PHONE}</a>
@@ -402,6 +428,7 @@ def footer(lang):
     <div class="btn-row">
       <a class="btn btn--black" href="{TEL}">{ico("phone")}{s["call"]}</a>
       <a class="btn btn--black" href="{SMS}">{ico("sms")}{s["text_us"]}</a>
+      <a class="btn btn--black" href="{wa(lang)}">{ico("whatsapp")}{s["whatsapp"]}</a>
       <a class="btn btn--black" href="{MAIL}">{ico("mail")}{s["email"]}</a>
       <a class="btn btn--black" href="{lang_url(lang, "contact/")}">{ico("quote")}{s["request"]}</a>
     </div>
@@ -411,13 +438,14 @@ def footer(lang):
 <footer class="site-footer">
   <div class="wrap">
     <div>
-      <img src="/assets/img/logo-256.webp" width="120" height="120" alt="{s["logo_alt"]}" loading="lazy">
+      <img src="/assets/img/logo-512.webp" width="160" height="160" alt="{s["logo_alt"]}" loading="lazy">
       <p>{s["tagline"]}</p>
     </div>
     <div>
       <h2>{s["contact_h"]}</h2>
       <ul>
         <li><a href="{TEL}">{ico("phone")}{PHONE}</a></li>
+        <li><a href="{wa(lang)}">{ico("whatsapp")}WhatsApp {PHONE}</a></li>
         <li><a href="mailto:derwin@fergusonspainting.com">{ico("mail")}derwin@fergusonspainting.com</a></li>
         <li>{ico("clock")}{s["hours"]}</li>{reply}
         <li><a href="https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/" rel="noopener">{ico("facebook")}{s["fb"]}</a></li>
@@ -442,10 +470,11 @@ def footer(lang):
   </div>
 </footer>
 <div class="callbar">
-  <a href="{TEL}">{ico("phone")}{s["bar"][0]}</a>
-  <a href="{SMS}">{ico("sms")}{s["bar"][1]}</a>
-  <a href="{MAIL}">{ico("mail")}{s["bar"][2]}</a>
-  <a href="{lang_url(lang, "contact/")}">{ico("quote")}{s["bar"][3]}</a>
+  <a class="callbar__call" href="{TEL}">{ico("phone")}{s["bar"][0]}</a>
+  <a class="callbar__sms" href="{SMS}">{ico("sms")}{s["bar"][1]}</a>
+  <a class="callbar__wa" href="{wa(lang)}">{ico("whatsapp")}{s["bar"][2]}</a>
+  <a class="callbar__mail" href="{MAIL}">{ico("mail")}{s["bar"][3]}</a>
+  <a class="callbar__quote" href="{lang_url(lang, "contact/")}">{ico("quote")}{s["bar"][4]}</a>
 </div>
 </body>
 </html>
@@ -476,7 +505,7 @@ def business(lang):
                                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                                        "opens": "00:00", "closes": "23:59"}],
         "knowsLanguage": "en",
-        "sameAs": ["https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/"],
+        "sameAs": ["https://www.facebook.com/FergusonsPaintingCleaningAndHomeRepair/", f"https://wa.me/{WA_NUMBER}"],
     }
 
 
